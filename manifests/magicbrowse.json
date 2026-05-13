@@ -11,12 +11,12 @@
   "npmPackages": [
     {
       "name": "@aftercard-ai/magicbrowse",
-      "version": "0.0.8",
+      "version": "0.0.9",
       "manifestPath": "packages/magicbrowse/package.json"
     },
     {
       "name": "@aftercard-ai/magicpay-sdk",
-      "version": "0.1.7",
+      "version": "0.1.8",
       "manifestPath": "packages/magicpay-sdk/package.json"
     },
     {
