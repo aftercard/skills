@@ -232,5 +232,5 @@ Exit codes follow `act`.
 ## Updating The CLI
 
 If `magicbrowse --version` is missing or outdated, run
-`npm i -g @aftercard-ai/magicbrowse-cli@latest`, then verify with
+`npm i -g @aftercard/magicbrowse-cli@latest`, then verify with
 `magicbrowse --version`.

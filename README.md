@@ -1,4 +1,4 @@
-# aftercard Agent Skills
+# aftercard AI Skills
 
 Installable skill bundles for MagicBrowse browser page-control fallback and MagicPay approved login, identity, checkout, donation, subscription, and payment pages in supported AI runtimes.
 
@@ -29,8 +29,8 @@ This repository is generated from the private release source. Use `manifests/<sk
 | GitHub Releases | Release assets on `magicbrowse-v*` and `magicpay-v*` tags | Direct zip installs for runtimes that load local skill folders. Use the runtime direct guide for the exact archive name and install path. |
 | Runtime install guides | `docs/<skill>/<runtime>/{direct,marketplace}/README.md` | Copy/paste prompts for your agent, including init, verification, and manual fallback steps. |
 | OpenClaw ClawHub | ClawHub plus `docs/<skill>/openclaw/marketplace/README.md` | Preferred OpenClaw install path; direct zip remains a fallback. |
-| Hermes GitHub hub/tap | `hermes/<skill>/SKILL.md` | Add the `aftercardAI/skills` tap in Hermes, then install the skill from `aftercardAI/skills/hermes/<skill>`. |
-| skills.sh / universal agents | `skills/<skill>/SKILL.md` in this repository | Install with `npx skills add aftercardAI/skills --skill <skill> --yes --copy`; skills.sh URLs stay under `aftercardai/skills/<skill>`. |
+| Hermes GitHub hub/tap | `hermes/<skill>/SKILL.md` | Add the `aftercard/skills` tap in Hermes, then install the skill from `aftercard/skills/hermes/<skill>`. |
+| skills.sh / universal agents | `skills/<skill>/SKILL.md` in this repository | Install with `npx skills add aftercard/skills --skill <skill> --yes --copy`; skills.sh URLs stay under `aftercard/skills/<skill>`. |
 
 ## Start with the right guide
 
