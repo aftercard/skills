@@ -1,5 +1,5 @@
 {
-  "packageName": "@aftercard-ai/agent-skills",
+  "publicRepository": "aftercard/skills",
   "packageVersion": "0.1.0",
   "publicSignupUrl": "https://agents.aftercard.ai/signup",
   "sourceExportManifest": "export-manifest.json",
