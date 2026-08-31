@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "magicpay",
+  "version": "0.1.85-dev.1942173893ff",
+  "description": "Use MagicPay through its remote MCP while the host browser owns the complete direct browser flow.",
+  "author": {
+    "name": "aftercard",
+    "url": "https://staging.magiccard.ai"
+  },
+  "repository": "https://github.com/aftercard/agent-pay",
+  "homepage": "https://staging.magiccard.ai",
+  "license": "MIT",
+  "keywords": [
+    "magicpay",
+    "payments",
+    "mcp",
+    "browser"
+  ]
+}

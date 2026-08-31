@@ -1,0 +1,10 @@
+{
+  "name": "MagicPay",
+  "repository": "aftercard/skills",
+  "skills": [
+    {
+      "name": "magicpay",
+      "path": "skills/magicpay"
+    }
+  ]
+}
