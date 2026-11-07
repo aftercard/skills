@@ -16,10 +16,19 @@ there is no separate Hermes workflow fork.
 
 ## OpenClaw and ClawHub
 
-The portable skill works through Skills CLI or a direct Git skill import.
-A ClawHub listing is a separate publication with its own publisher, scan and
-license rules. Use only a verified listing URL/version recorded by its owner;
-GitHub publication alone does not establish ClawHub publication.
+The native listing is https://clawhub.ai/aftercard/skills/aftercard.
+Use `openclaw skills install @aftercard/aftercard`. ClawHub uses the required
+MIT-0 license; GitHub uses MIT. The workflow text is shared. Inspect the exact
+published version and its scan before installing. Skill installation and MCP
+connection are separate actions.
+
+Current OpenClaw supports native remote MCP under `mcp.servers`: use the
+exact endpoint https://mcp.aftercard.ai/mcp, `transport: "streamable-http"` and
+`auth: "oauth"`, then `openclaw mcp login aftercard` when needed. Inspect
+an existing matching connection first. Use Settings > MCP or the documented
+`openclaw mcp` commands; do not add a custom bridge or switch identities.
+Older clients without native remote MCP/OAuth must update through their normal
+supported path or report the limitation. A skill adds no missing host tools.
 
 ## Native Codex / Claude Code plugins
 
@@ -36,7 +45,10 @@ registered/imported through the account's supported public or workspace flow.
 The repository's local marketplace does not establish web eligibility. Do not
 invent a registered app ID or claim desktop MCP configuration enables web Chat.
 Connectors provide tools; load the skill through an account-supported skill
-or plugin import. Record actual Chat/Work acceptance separately.
+or plugin import. The Skills tab can be visible while reporting that skills
+are unavailable for the account. In that case verify the MCP connection and
+report skill import as unavailable; do not claim the connector installed the
+workflow. Record actual Chat/Work acceptance separately.
 
 ## Claude browser
 
@@ -51,6 +63,10 @@ sensitive card handling; do not use it as a direct-card checkout workaround.
 Upload the single-skill release ZIP through Skills > Add > Upload a skill.
 Add the remote MCP through its native custom connector settings and verify
 OAuth and read-only tools. A folder import is separate from a connector.
+A saved custom connector and a loaded tool catalog do not prove sign-in. If
+read-only calls return authentication required and no native sign-in action
+is available, report authentication blocked. Do not copy OAuth tokens into
+custom headers or silently substitute an API-key identity.
 The documented GitHub import expects a root SKILL.md; do not assume this
 collection's nested folder works through that route. Use the ZIP first.
 Browser capabilities, payment policies and takeover remain host-specific.
@@ -60,7 +76,7 @@ Browser capabilities, payment policies and takeover remain host-specific.
 Read the skill's connection reference. Discover tools in the current task,
 read capabilities and authenticated status, then balance. Installation,
 authentication, widgets and checkout are separate checks. No test purchase is
-needed for connection verification. Version 1.0.1 documents the service
+needed for connection verification. Version 1.0.2 documents the service
 contract; it does not turn a simulated provider into a live payment rail.
 
 ## Update

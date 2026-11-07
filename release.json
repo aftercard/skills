@@ -1,11 +1,11 @@
 {
   "repository": "aftercard/skills",
-  "version": "1.0.1",
-  "tag": "aftercard-v1.0.1",
+  "version": "1.0.2",
+  "tag": "aftercard-v1.0.2",
   "endpoint": "https://mcp.aftercard.ai/mcp",
   "sourceRepository": "aftercard/aftercard",
-  "sourceRevision": "a073ffc47de2ebb730ffe45b2f846c0920c9290e",
-  "sourceContentDigest": "f40ed08b5daa748830dc3cb2654de45e1f7994c4d93b7caac693021e09ccb53e",
+  "sourceRevision": "ac76f10ba9cf640bdb00336f62a86c7acf6f8c71",
+  "sourceContentDigest": "9c088f7d16565504a4c33cde4bba6f651d2d77cb7c9c9125da205977bfb82993",
   "sources": [
     {
       "path": "apps/mcp/src/mcp/register-capabilities.ts",
@@ -13,7 +13,7 @@
     },
     {
       "path": "apps/mcp/src/mcp/server.ts",
-      "sha256": "a412d267b2a5f1e6eedbc50ba26e08140c98120819558a4ff1d923bb4f29ff52"
+      "sha256": "3af9b8e6402c7c3d55c046a1e79a59eab3975d795b5af2943bc827657f5d4f51"
     },
     {
       "path": "apps/mcp/src/mcp/tools/account-activity.ts",
@@ -197,7 +197,7 @@
     },
     {
       "path": "packages/agent-skills/scripts/build-aftercard-skills.mjs",
-      "sha256": "bac84ffd9f1a1295d67ac3b5f8c68ffe2531068bb97fc6e06f44a9521e4413ee"
+      "sha256": "0bd6cf0030f9e465621e60f77624d376ab8fc1e94b131086a5815263e93ed231"
     },
     {
       "path": "packages/agent-skills/skills/aftercard/references/accounts.md",
@@ -229,11 +229,11 @@
     },
     {
       "path": "packages/agent-skills/skills/aftercard/SKILL.md",
-      "sha256": "50430cea14ff756dfadadc8629f15593e6a4d392db6d9adc0da6d16d4ec3ef3a"
+      "sha256": "7bc9e7f50c05cda1460412ef7c35a999c1ad5daf9b3595c6f6c9eebbab186693"
     },
     {
       "path": "packages/core/src/aftercard-mcp-setup.mjs",
-      "sha256": "575bc5dae19a1a661897e7661a60a53f0c9ebdba5953ef5cb443b037a6bde329"
+      "sha256": "be98108f860f142c0e5580215cd458827719a058c66c1123354b26879793e96a"
     }
   ],
   "files": [
@@ -243,15 +243,15 @@
     },
     {
       "path": ".claude-plugin/marketplace.json",
-      "sha256": "afb788badc05b14bf4391718d2c10b93affd31d8ea8fefcb6683943850a18300"
+      "sha256": "cefdfc9c62e89284590c76d6f455f7741f4c8e66a7bf9a37d26524c3e3782df7"
     },
     {
       "path": "docs/connection.md",
-      "sha256": "26d34fc209baa8803e44565106b72e947236de05588c066b5b76ad80037e1e51"
+      "sha256": "87f1931fe1422b86cc3f2919db48bc25e3fb5c05c06914f4125d5f8c58f9cac6"
     },
     {
       "path": "docs/install.md",
-      "sha256": "6e5a3c62bd84c0c876a84caad47c14def78ce69df3960d0111f8dcf488f760f2"
+      "sha256": "79b146a14c0127506b6cfc9aece20d488cb57eac8aa9ecc9408dd43abd47c8f9"
     },
     {
       "path": "LICENSE",
@@ -263,11 +263,11 @@
     },
     {
       "path": "plugins/aftercard/.claude-plugin/plugin.json",
-      "sha256": "5c8cf51807685789bf04388d07188338f12a08d39de6281e5cdc69950b71ce91"
+      "sha256": "7ffed332f4a8dfd1b8216a5cd7393013a531160f76fdc86f006601dec98d7edb"
     },
     {
       "path": "plugins/aftercard/.codex-plugin/plugin.json",
-      "sha256": "9338a42cb685b6e99b4d260d71baeb7e2c0aabfd0019db232cef2619ae29ee0a"
+      "sha256": "350ca170ead69f0decc660591e0b0b5a2c4a08f5e765667d8d700ea2da5d66d9"
     },
     {
       "path": "plugins/aftercard/.mcp.json",
@@ -279,7 +279,7 @@
     },
     {
       "path": "plugins/aftercard/plugin.json",
-      "sha256": "63aba708378ac5cbe421ce4a77c213000d78cc1e5f7cf555207b2a94337180cb"
+      "sha256": "f4757c7f18774bb0b8313e182fd50b45e3eca8226d87ddcc239e36dc19d0a3eb"
     },
     {
       "path": "plugins/aftercard/skills/aftercard/agents/openai.yaml",
@@ -319,7 +319,7 @@
     },
     {
       "path": "plugins/aftercard/skills/aftercard/references/service-instructions.md",
-      "sha256": "93308d0618f3bf29c01b7678045ab0402abdfabfbd50290de82d3f4d00319ee2"
+      "sha256": "bb503fe8630c04dfcabf1de1679a1ec918bb5497081647867ce370b2b49d5000"
     },
     {
       "path": "plugins/aftercard/skills/aftercard/references/tool-catalog.md",
@@ -327,15 +327,19 @@
     },
     {
       "path": "plugins/aftercard/skills/aftercard/SKILL.md",
-      "sha256": "50430cea14ff756dfadadc8629f15593e6a4d392db6d9adc0da6d16d4ec3ef3a"
+      "sha256": "7bc9e7f50c05cda1460412ef7c35a999c1ad5daf9b3595c6f6c9eebbab186693"
     },
     {
       "path": "README.md",
-      "sha256": "41d9d4c0440354e47037f14e693b209e373447092052ef736baeff4929907daa"
+      "sha256": "7b2e45166a302ccc6a51d67046940c908fa2823f063e3bc8276bd83def22182c"
     },
     {
-      "path": "releases/aftercard-v1.0.1.zip",
-      "sha256": "327c4cf9bf6e059e8166885521edbd493efe6f168a264cb7ab3bd3d3c710a97d"
+      "path": "releases/aftercard-v1.0.2.zip",
+      "sha256": "e40a7fd05e03de5adf28997d909be92e43629d2570c5a7044ce3fccdeb161944"
+    },
+    {
+      "path": "releases/aftercard.zip",
+      "sha256": "e40a7fd05e03de5adf28997d909be92e43629d2570c5a7044ce3fccdeb161944"
     },
     {
       "path": "skills/aftercard/agents/openai.yaml",
@@ -375,7 +379,7 @@
     },
     {
       "path": "skills/aftercard/references/service-instructions.md",
-      "sha256": "93308d0618f3bf29c01b7678045ab0402abdfabfbd50290de82d3f4d00319ee2"
+      "sha256": "bb503fe8630c04dfcabf1de1679a1ec918bb5497081647867ce370b2b49d5000"
     },
     {
       "path": "skills/aftercard/references/tool-catalog.md",
@@ -383,7 +387,7 @@
     },
     {
       "path": "skills/aftercard/SKILL.md",
-      "sha256": "50430cea14ff756dfadadc8629f15593e6a4d392db6d9adc0da6d16d4ec3ef3a"
+      "sha256": "7bc9e7f50c05cda1460412ef7c35a999c1ad5daf9b3595c6f6c9eebbab186693"
     },
     {
       "path": "skills.sh.json",

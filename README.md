@@ -12,4 +12,4 @@ Hermes users can add this repository with `hermes skills tap add aftercard/skill
 
 The same skill is bundled in thin native plugins. Business logic and authorization stay on the service; browser execution stays with the host. Tool names retain the existing magicpay protocol namespace.
 
-Generated from the maintained Aftercard skill and current service registrations in [the source project](https://github.com/aftercard/aftercard). Legacy MagicPay packages are reference material, not the build source. See release.json for source and file hashes. Local package validation does not establish OAuth, live payment readiness or browser-host acceptance.
+Generated from the maintained Aftercard skill and current service registrations in [the source project](https://github.com/aftercard/aftercard). The maintained playbooks follow current Aftercard service contracts. See release.json for source and file hashes. Local package validation does not establish OAuth, live payment readiness or browser-host acceptance.
