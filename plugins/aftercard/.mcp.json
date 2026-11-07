@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "aftercard": {
+      "type": "http",
+      "url": "https://mcp.aftercard.ai/mcp"
+    }
+  }
+}

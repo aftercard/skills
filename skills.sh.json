@@ -1,12 +1,11 @@
 {
   "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
-  "notGrouped": "bottom",
   "groupings": [
     {
-      "title": "MagicPay",
-      "description": "Skills for MagicPay and related agent payment workflows.",
+      "title": "Aftercard",
+      "description": "Purchasing, payments and saved details.",
       "skills": [
-        "magicpay"
+        "aftercard"
       ]
     }
   ]

@@ -1,14 +1,14 @@
 {
   "name": "aftercard-skills",
   "interface": {
-    "displayName": "aftercard Skills"
+    "displayName": "Aftercard Skills"
   },
   "plugins": [
     {
-      "name": "magicpay",
+      "name": "aftercard",
       "source": {
         "source": "local",
-        "path": "./plugins/magicpay"
+        "path": "./plugins/aftercard"
       },
       "policy": {
         "installation": "AVAILABLE",

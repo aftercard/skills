@@ -1,10 +1,15 @@
-# MagicPay Agent Skill
+# Aftercard Skills
 
-MagicPay uses each agent runtime built-in browser for navigation, page
-analysis, ordinary and payment form filling, one exact final click, and
-result interpretation. Approval authorizes use of a payment-scoped
-one-time card only for that exact checkout. No second browser runtime
-or legacy fill-and-commit path is packaged.
+Reusable purchasing and payment guidance in the open Agent Skills format.
 
-Install the native MagicPay plugin. It bundles the skill and remote MCP
-declaration without installing a package, CLI, library, or local service.
+`npx skills add aftercard/skills --skill aftercard`
+
+Connect the remote MCP at https://mcp.aftercard.ai/mcp through your host's native OAuth flow. The skill alone does not connect an account or grant spending authority.
+
+[Installation by platform](docs/install.md) · [Skill](skills/aftercard/SKILL.md) · [Releases](https://github.com/aftercard/skills/releases) · [License](LICENSE)
+
+Hermes users can add this repository with `hermes skills tap add aftercard/skills` and install `hermes skills install aftercard/skills/skills/aftercard`. Browser users can upload the release ZIP where supported.
+
+The same skill is bundled in thin native plugins. Business logic and authorization stay on the service; browser execution stays with the host. Tool names retain the existing magicpay protocol namespace.
+
+Generated from the maintained Aftercard skill and current service registrations in [the source project](https://github.com/aftercard/aftercard). Legacy MagicPay packages are reference material, not the build source. See release.json for source and file hashes. Local package validation does not establish OAuth, live payment readiness or browser-host acceptance.

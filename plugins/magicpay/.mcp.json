@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "magicpay": {
-      "type": "http",
-      "url": "https://mcp.magiccard.ai/mcp",
-      "oauth_resource": "https://mcp.magiccard.ai/mcp"
-    }
-  }
-}

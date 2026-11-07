@@ -1,23 +1,14 @@
 {
   "name": "aftercard-skills",
-  "description": "MagicPay host plugin releases by aftercard.",
   "owner": {
-    "name": "aftercard"
+    "name": "Aftercard"
   },
   "plugins": [
     {
-      "name": "magicpay",
-      "source": "./plugins/magicpay",
-      "description": "Use MagicPay through its remote MCP while the host browser owns the complete direct browser flow.",
-      "version": "0.4.96",
-      "author": {
-        "name": "aftercard"
-      },
-      "homepage": "https://magiccard.ai",
-      "repository": "https://github.com/aftercard/agent-pay",
-      "license": "MIT",
-      "keywords": ["magicpay", "payments", "mcp", "browser"],
-      "category": "Finance"
+      "name": "aftercard",
+      "source": "./plugins/aftercard",
+      "version": "1.0.0",
+      "description": "Aftercard purchasing and payment workflows through remote MCP."
     }
   ]
 }

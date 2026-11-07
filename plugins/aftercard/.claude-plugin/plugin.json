@@ -1,0 +1,11 @@
+{
+  "name": "aftercard",
+  "version": "1.0.0",
+  "description": "Aftercard purchasing and payment workflows through remote MCP.",
+  "author": {
+    "name": "Aftercard"
+  },
+  "homepage": "https://aftercard.ai",
+  "repository": "https://github.com/aftercard/skills",
+  "license": "MIT"
+}
