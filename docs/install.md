@@ -60,7 +60,7 @@ Browser capabilities, payment policies and takeover remain host-specific.
 Read the skill's connection reference. Discover tools in the current task,
 read capabilities and authenticated status, then balance. Installation,
 authentication, widgets and checkout are separate checks. No test purchase is
-needed for connection verification. Version 1.0.0 documents the service
+needed for connection verification. Version 1.0.1 documents the service
 contract; it does not turn a simulated provider into a live payment rail.
 
 ## Update
