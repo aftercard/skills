@@ -1,11 +1,11 @@
 {
   "repository": "aftercard/skills",
-  "version": "1.0.2",
-  "tag": "aftercard-v1.0.2",
+  "version": "1.0.3",
+  "tag": "aftercard-v1.0.3",
   "endpoint": "https://mcp.aftercard.ai/mcp",
   "sourceRepository": "aftercard/aftercard",
-  "sourceRevision": "ac76f10ba9cf640bdb00336f62a86c7acf6f8c71",
-  "sourceContentDigest": "9c088f7d16565504a4c33cde4bba6f651d2d77cb7c9c9125da205977bfb82993",
+  "sourceRevision": "86991d9847acec15f0952c17562de92d02fc5fbb",
+  "sourceContentDigest": "9c89e061d6e647c45a082f00b9b32f91efb864bb45c7ebb034af32264fbcb7a9",
   "sources": [
     {
       "path": "apps/mcp/src/mcp/register-capabilities.ts",
@@ -197,7 +197,7 @@
     },
     {
       "path": "packages/agent-skills/scripts/build-aftercard-skills.mjs",
-      "sha256": "0bd6cf0030f9e465621e60f77624d376ab8fc1e94b131086a5815263e93ed231"
+      "sha256": "91c4abe196e70463abcc96c3d2d7cb2c39ddbd0fd638223b73e2f29aa8515646"
     },
     {
       "path": "packages/agent-skills/skills/aftercard/references/accounts.md",
@@ -229,7 +229,7 @@
     },
     {
       "path": "packages/agent-skills/skills/aftercard/SKILL.md",
-      "sha256": "7bc9e7f50c05cda1460412ef7c35a999c1ad5daf9b3595c6f6c9eebbab186693"
+      "sha256": "a62ac8f379d8e5f5cb737467ee80bcd6a90655e03f57bf3454b6d0818914f668"
     },
     {
       "path": "packages/core/src/aftercard-mcp-setup.mjs",
@@ -243,7 +243,7 @@
     },
     {
       "path": ".claude-plugin/marketplace.json",
-      "sha256": "cefdfc9c62e89284590c76d6f455f7741f4c8e66a7bf9a37d26524c3e3782df7"
+      "sha256": "7b5d6e831ebb4b421941cf8e5d780f23216f2b8b063e6311de7a0e1cea9f49a5"
     },
     {
       "path": "docs/connection.md",
@@ -251,7 +251,7 @@
     },
     {
       "path": "docs/install.md",
-      "sha256": "79b146a14c0127506b6cfc9aece20d488cb57eac8aa9ecc9408dd43abd47c8f9"
+      "sha256": "8ff74300ad1dfc55cd9a5811e1d9ca686fdeb9b45de173348555aa3bbae02041"
     },
     {
       "path": "LICENSE",
@@ -263,11 +263,11 @@
     },
     {
       "path": "plugins/aftercard/.claude-plugin/plugin.json",
-      "sha256": "7ffed332f4a8dfd1b8216a5cd7393013a531160f76fdc86f006601dec98d7edb"
+      "sha256": "8b2a613e74a7edd8eda1db2014206e7de60a578105291f308008d03553d0e529"
     },
     {
       "path": "plugins/aftercard/.codex-plugin/plugin.json",
-      "sha256": "350ca170ead69f0decc660591e0b0b5a2c4a08f5e765667d8d700ea2da5d66d9"
+      "sha256": "64dbef4672835da4e73f0617a5f16cc2536f7fe12669b6f5b18f2d66f6203bbf"
     },
     {
       "path": "plugins/aftercard/.mcp.json",
@@ -279,7 +279,7 @@
     },
     {
       "path": "plugins/aftercard/plugin.json",
-      "sha256": "f4757c7f18774bb0b8313e182fd50b45e3eca8226d87ddcc239e36dc19d0a3eb"
+      "sha256": "2038ca6325eb0ea8f582e3350307da1365a6263d84f0016bb177b2aff0a318a9"
     },
     {
       "path": "plugins/aftercard/skills/aftercard/agents/openai.yaml",
@@ -327,19 +327,19 @@
     },
     {
       "path": "plugins/aftercard/skills/aftercard/SKILL.md",
-      "sha256": "7bc9e7f50c05cda1460412ef7c35a999c1ad5daf9b3595c6f6c9eebbab186693"
+      "sha256": "a62ac8f379d8e5f5cb737467ee80bcd6a90655e03f57bf3454b6d0818914f668"
     },
     {
       "path": "README.md",
-      "sha256": "7b2e45166a302ccc6a51d67046940c908fa2823f063e3bc8276bd83def22182c"
+      "sha256": "436a0b4e55d7255068927555e9a71f68a52333d2448c60bb55789645881106e2"
     },
     {
-      "path": "releases/aftercard-v1.0.2.zip",
-      "sha256": "e40a7fd05e03de5adf28997d909be92e43629d2570c5a7044ce3fccdeb161944"
+      "path": "releases/aftercard-v1.0.3.zip",
+      "sha256": "a812339091c5e933d857d84f0fcaec7620a54f1921d27e66f87140745a1f9a73"
     },
     {
       "path": "releases/aftercard.zip",
-      "sha256": "e40a7fd05e03de5adf28997d909be92e43629d2570c5a7044ce3fccdeb161944"
+      "sha256": "a812339091c5e933d857d84f0fcaec7620a54f1921d27e66f87140745a1f9a73"
     },
     {
       "path": "skills/aftercard/agents/openai.yaml",
@@ -387,7 +387,7 @@
     },
     {
       "path": "skills/aftercard/SKILL.md",
-      "sha256": "7bc9e7f50c05cda1460412ef7c35a999c1ad5daf9b3595c6f6c9eebbab186693"
+      "sha256": "a62ac8f379d8e5f5cb737467ee80bcd6a90655e03f57bf3454b6d0818914f668"
     },
     {
       "path": "skills.sh.json",

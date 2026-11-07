@@ -4,7 +4,7 @@ Reusable purchasing and payment guidance in the open Agent Skills format.
 
 `npx skills add aftercard/skills --skill aftercard`
 
-Connect the remote MCP at https://mcp.aftercard.ai/mcp through your host's native OAuth flow. The skill alone does not connect an account or grant spending authority.
+Connect the remote MCP at https://mcp.aftercard.ai/mcp through native settings, using OAuth or the explicitly selected external-agent credential. The skill alone does not connect an account or grant spending authority.
 
 [Installation by platform](docs/install.md) · [Skill](skills/aftercard/SKILL.md) · [Releases](https://github.com/aftercard/skills/releases) · [License](LICENSE)
 

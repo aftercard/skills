@@ -61,12 +61,28 @@ sensitive card handling; do not use it as a direct-card checkout workaround.
 ## Manus
 
 Upload the single-skill release ZIP through Skills > Add > Upload a skill.
-Add the remote MCP through its native custom connector settings and verify
-OAuth and read-only tools. A folder import is separate from a connector.
-A saved custom connector and a loaded tool catalog do not prove sign-in. If
-read-only calls return authentication required and no native sign-in action
-is available, report authentication blocked. Do not copy OAuth tokens into
-custom headers or silently substitute an API-key identity.
+For an installed copy, use its menu > Replace to import an update without
+recreating the connector or its credential. Skill import is separate from
+account access.
+
+Add https://mcp.aftercard.ai/mcp through Manus's native custom MCP settings. Use native OAuth
+when it is offered. If the custom connector offers only private headers, the
+user can explicitly select a dedicated Aftercard agent instead: in Aftercard's
+Agents page choose Add Agent > Manus, then configure that selected agent's key
+in the personal Manus connector as an Authorization header with value
+`Bearer <selected agent key>`. Creating and storing the credential requires
+the host's applicable permission. Keep it in secure setup fields; never paste
+a key-bearing setup prompt into chat, files, logs or command arguments.
+Do not copy OAuth tokens or silently switch the selected identity. Preserve
+an existing matching agent and credential.
+
+A saved connector and a loaded catalog do not prove authentication. Read the
+skill's connection reference and verify capabilities, authenticated status and
+balance in a task using the selected skill. Report actual rail availability
+and distinguish a simulated ledger from live cash. If neither native OAuth
+nor an explicitly selected private-header connection is supported, report the
+host limitation. No purchase or funding request belongs in this check.
+
 The documented GitHub import expects a root SKILL.md; do not assume this
 collection's nested folder works through that route. Use the ZIP first.
 Browser capabilities, payment policies and takeover remain host-specific.
@@ -76,7 +92,7 @@ Browser capabilities, payment policies and takeover remain host-specific.
 Read the skill's connection reference. Discover tools in the current task,
 read capabilities and authenticated status, then balance. Installation,
 authentication, widgets and checkout are separate checks. No test purchase is
-needed for connection verification. Version 1.0.2 documents the service
+needed for connection verification. Version 1.0.3 documents the service
 contract; it does not turn a simulated provider into a live payment rail.
 
 ## Update
