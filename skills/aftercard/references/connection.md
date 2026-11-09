@@ -15,7 +15,11 @@ When sign-in is required, use one supported native authentication action for
 that connection. Email and OTP belong only in its secure browser flow. Keep
 tokens, authorization codes and access-bearing URLs out of chat, shell
 arguments, logs and evidence. Reuse pending sign-in. A canceled or denied
-attempt stops; another client or method must not bypass it.
+attempt stops; another client or method must not bypass it. While OAuth is
+pending, use the host’s supported bounded completion wait and observe its
+authentication result before current-task discovery. Do not require a “done”
+reply or infer success from an opened or closed window. If completion cannot
+be observed within the supported deadline, report that phase as pending.
 
 If a supported existing CLI is the user's host configuration surface, Codex
 can add an absent server with `codex mcp add aftercard --url
@@ -25,18 +29,27 @@ https://mcp.aftercard.ai/mcp`; use its interactive `/mcp` Authenticate action
 when the agent cannot initiate login. Do not install another CLI to bridge a
 missing host feature. Other hosts use their native remote MCP settings.
 
-After authorization, discover deferred tools in this conversation and call
-`get_magicpay_capabilities`, then `get_magicpay_status`. Reuse the current task
-when callable. Follow observed authentication, service and activation errors
+After authorization, discover deferred tools in this conversation and reuse
+the current task when callable. For diagnosis use `get_aftercard_status`; each
+section retains its connected or requested-agent scope. Older catalogs expose
+`get_magicpay_capabilities`, `get_magicpay_status` and `account_status` for
+their separate diagnostic reads. A normal task needs no startup checklist.
+Follow observed authentication, service and activation errors
 separately. Use only the host's supported refresh or documented user handoff;
 do not automate its settings or invent private RPC. A new chat cannot prove
 sign-in or retain a payment approval/context that the host did not preserve.
 
+For optional skill/plugin removal, use the host’s native manager for that exact
+installation and scope. Removing guidance does not log out or revoke the remote
+connection. A requested logout/disconnect uses that connection’s native control;
+remote revocation is separate. Do not remove a shared marketplace or unrelated
+skills to remove Aftercard.
+
 Check the selected environment, owned agent, current setup state, execution
 mode and rail-specific availability. Respect each rail's compatibility floor;
 do not require the newest release merely because it exists. Offer only ready
-rails. Silently read `get_payment_balance` without an asset selector after
-authenticated readiness. Unknown balance is unknown, not zero. Report the
+rails. For a requested balance, read `get_payment_balance` directly without an
+asset selector. Unknown balance is unknown, not zero. Report the
 verified connection, exact formatted balance and actual available capabilities.
 Connection verification creates no payment, top-up or test charge.
 

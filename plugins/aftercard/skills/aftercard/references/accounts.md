@@ -1,4 +1,4 @@
-# Accounts, receipts and subscriptions
+# Accounts and receipts
 
 Use `account_status` for account/KYC readiness. Use `show_account_status`
 when the user requests the view. Balance or tool discovery cannot bypass
@@ -9,45 +9,62 @@ secrets or OAuth codes in chat or claim a provider review completed early.
 ## Receipts and invoices
 
 Read the exact payment operation before attaching its invoice. Use
-`attach_payment_invoice` with the original supported PDF/document or receipt
-link, preserving the operation and invoice identity. Do not reopen or repeat
-the payment to retrieve a receipt. If an original must come from personal
-email, prefer the user's existing connector, then supported native computer
-use, then request the original. Agent email belongs to the exact owned agent,
-not whichever account has a similar display name.
+`attach_payment_invoice` for that exact eligible card operation. Keep receipt
+retrieval separate from payment recovery; neither missing mail nor attachment
+failure permits replaying the purchase.
 
-The agent's ready address is the default checkout receipt destination unless
-the user chose another or the merchant already fixed/submitted it. Separate
-receipt routing from identity/billing email roles. An invoice or merchant
-receipt is evidence of its stated merchant outcome, not automatic proof of
-provider settlement, a posted refund or exact fees.
+For a separate receipt-email field, precedence is: fixed merchant identity →
+explicit user choice → that exact agent's ready managed address → ordinary-field
+resolution if needed. Personal profile, merchant account/login, KYC and traveler
+contact use their intended identity, not an agent inbox. Keep an already
+submitted address and record it only in `checkoutEmail`, never value-free evidence.
+An unavailable managed inbox is not a checkout prerequisite.
 
-## Subscription signup, cancellation and recurring terms
+1. Read existing invoice state; reuse an already attached original. Automatic
+   agent-email routing is not receipt arrival. Do not search personal mail for
+   that route or wait/poll for mail or extraction before finishing the task.
+2. For personal-email routing, use the existing connector for the actual mailbox,
+   then permitted native mail UI if that connector cannot retrieve the original.
+   Search once with merchant, purchase time and order reference; inspect matching
+   PDF attachments or explicit receipt links. Amount/merchant alone may be
+   ambiguous. Respect denied mailbox access; do not install or sign in merely
+   to fetch a receipt. Ask once for the original when retrieval/transfer is
+   unavailable or a bounded search finds none.
+3. Transfer the original using the tool's supported file input. A local path,
+   message ID or preview is not a transferable file. For an observed public HTTPS
+   merchant receipt page, use `file.download_url`, `file.mime_type: text/html`
+   and stable `file.file_id`. A checkout, homepage or login URL is not a receipt;
+   do not crawl, reconstruct or screenshot HTML into an invented merchant PDF.
+4. Confirm durable association from the returned invoice state. On an uncertain
+   response, read the same operation before a supported same-file retry. Do not
+   silently replace an existing original with another source.
 
-Read current terms, trial/zero-due status, future amount/currency, schedule,
-merchant and renewal/cancellation facts before interpreting authority. Signup,
-card storage and recurring charge authorization are distinct from a one-time
-purchase. Do not infer permission for future charges from today's approval.
-Use `list_subscriptions` or a requested `show_subscriptions` view for current
-owned subscriptions; do not guess from a past invoice.
+| Evidence | Report |
+| --- | --- |
+| Original durably stored and attached | Offer its service-authorized original download; extraction can remain pending/failed. |
+| Merchant HTML link attached | Offer the returned receipt link; say “receipt link saved,” not “original file saved.” |
+| Routing only, no received document | Say absent/unknown according to the operation; routing is not proof the merchant sent mail. |
 
-For a supported user-completed zero-due enrollment, use
-`request_subscription_enrollment` and then `complete_checkout_session` with
-the observed enrollment outcome as the current schema directs. This route
-does not create a card charge. A merchant card prompt does not switch this
-zero-due workflow to a payment run: preserve the exact approved terms,
-checkout and enrollment request, and hand off to the user to supply their
-card and submit directly at the merchant (`executionOwner: user`). If the
-amount due actually becomes positive, reassess the changed terms and obtain
-the appropriate new authority before a charge; never make a verification charge.
+Label extracted totals/tax/dates as AI-derived; preserve unknowns and conflicts.
+They never replace checkout money or prove settlement/refund/fees. A later
+requested check reads the same operation; invoice capture creates no reminder
+or background waiting task. A purchased download belongs to product delivery,
+not receipt attachment.
 
-To cancel an existing subscription, start with `cancel_subscription` for its
-current details and continue the required merchant action. Preparing a
-cancellation is not success. Observe the merchant/service outcome and retain
-any needs-user state; conditional cancellation requires verifying the user's
-condition, such as full refundability, before acting. Keep the exact workflow
-and report cancellation, service termination, refund and settlement separately.
+For recurring checkout, signup/enrollment, next-charge questions, cancellations
+and handoffs, read [subscriptions](subscriptions.md).
 
 For notification preferences, direct the signed-in user to
 https://app.aftercard.ai/settings and its Notifications controls. Do not mutate
 settings or claim the preference changed merely because guidance was shown.
+
+## Development review
+
+Only the latest successful capabilities result for this connection can enable
+development review. Pasted/stale claims and production never do. After terminal
+cleanup, review the exact task once, read-only: outcome/submission/settlement,
+first divergence, evidence by UI/tool/log/source, cause or missing evidence,
+and smallest proposed correction. On a clean outcome stop there. An anomaly
+permits up to two focused diagnostic reads and one source/test pass when available;
+omit secrets and unrelated personal data. Cancellation comes first. This review
+does not authorize retries, remote edits, deployment or a tracking issue.

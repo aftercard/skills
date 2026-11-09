@@ -19,9 +19,10 @@ reconstruction. Unknown amounts or currencies remain unknown.
 ## Start the requested rail
 
 - Crypto transfer: resolve exact recipient/address, network, asset and amount.
-  For a named recipient, discover Memory before asking for an address; use a
-  purpose-matched session or `begin_request_session`, then materialize the
-  address, network and asset together. Memory release is not payment approval.
+  For an unresolved named recipient, follow the [Secrets recipient recipe](secrets.md#named-transfer-recipients)
+  before asking for an address. Materialize the address, network and asset
+  together. A complete explicitly supplied tuple needs no Secrets lookup;
+  Secrets release is not payment approval.
   Use `run_crypto_transfer` with the user's authorized debit and current schema.
 - x402: a price-only request uses `quote_x402_payment`, presents the
   fee-inclusive debit/maximum and expiry, and stops. For an authorized purchase,
@@ -33,32 +34,67 @@ reconstruction. Unknown amounts or currencies remain unknown.
   be tightened to the accepted fee-inclusive debit, but must remain at least
   the quoted debit and no greater than the preview maximum. Expired or changed
   terms require a fresh preview and acceptance before execution.
-- Browser: `create_checkout_session` binds the exact intended checkout; it
-  neither opens nor controls the merchant page. Discover saved billing roles
-  through `get_memory_footprint`, supply those as ordinary fields to
-  `run_browser_payment`, and collect only what remains missing. Follow
-  [browser execution](browser.md) for the authorized page interaction.
+- Browser: `begin_checkout_task` binds the exact intended checkout; it
+  neither opens nor controls the merchant page. Follow [browser execution](browser.md)
+  for preparation, saved/current-run ordinary values, filling and observation.
 
-Continue each run with `wait_payment` using its exact returned run identity,
-cursor and next action. Approval and policy checks are owned by that run.
+Continue each payment run with `wait_payment` using its exact returned `taskId`,
+cursor and next action. Request, task and operation statuses describe their own
+records; one record’s status does not establish another’s outcome. Approval and policy checks are owned by that run.
 Do not ask for a redundant chat confirmation before or after Aftercard's
 approval, repeat an approval, or replace it with a generic action request.
 The host's own permissions and required confirmations still apply.
 
 ## Funding
 
-Read current balance and `list_funding_methods` before a funding action.
-Generic “top up” uses `show_topup` and its returned view/link. Use
-`create_topup_link` when the user explicitly requests a link or the widget
-cannot render; otherwise reuse the returned generic funding link. Use
-`request_topup_addresses` or `request_funding_address` only for the requested
-supported funding route. A displayed address, opened link or changed balance
-does not prove a particular payment or deposit settled.
+Start with the tool for the requested funding intent; balance and method
+discovery are not prerequisites for these composed actions.
 
-When the owning run reports required funding, retain its existing funding
-gate and approval, state the shortfall/deadline and reuse the returned link.
-Without such a gate, use `show_topup` once as directed. After timeout or
-expiry, read that same run/request; elapsed time never permits replacement.
+| Request | Action |
+| --- | --- |
+| Generic “top up”, or show/open the top-up view | `show_topup` once; follow its returned view/link. |
+| A funding link | `create_topup_link` once; return its fresh hosted URL. |
+| Available direct funding methods | `list_funding_methods`. |
+| Every direct funding address | `request_topup_addresses` without `asset`, with one stable `requestKey`. |
+| Direct addresses for one asset | `request_topup_addresses` with that exact `asset` and one stable `requestKey`. |
+
+For a hosted-chat how-to-top-up support question, follow the host's funding
+handoff: return live direct addresses and a hosted link using the two composed
+tools above. This support question needs no balance or setup detour.
+
+When `show_topup` returns a hosted URL, present it without minting another.
+If it returns widget data but the view cannot render or is reported missing,
+use `create_topup_link` once. Returned widget data does not prove visibility.
+Present successful address methods with their exact asset/network labels and
+name unavailable methods separately. Preserve successes on a partial result;
+retry the same aggregate request with the same `requestKey`. An unsupported
+asset does not authorize another network or a hosted-link substitution for an
+address-only request. Use lower-level `request_funding_address` only when an
+authoritative flow already supplied the exact asset namespace, ID and network;
+keep that tuple and its `idempotencyKey` unchanged on recovery.
+
+Use balance and exact funding-operation reads when needed to verify funds.
+A displayed address, opened link or changed balance does not prove a particular
+payment or deposit settled.
+
+When the owning run reports required funding, retain its existing `fundingGate`
+and any returned approval/request. State the verified shortfall. Reuse only an
+actually returned request/link and an explicitly supplied deadline; the gate’s
+amounts/status alone contain neither. If the result reports a missing/failed
+approval handoff, follow that blocker and reason without manufacturing a link,
+deadline or replacement approval. Use `show_topup` only when the owning next
+action directs it or the user requests standalone funding. A pending manual
+approval still needs its recorded decision; a deposit does not approve it.
+After timeout or expiry, read that same run/request; elapsed time never permits
+replacement.
+
+| Observed condition | Continuation |
+| --- | --- |
+| Customer balance shortfall | Follow the gate’s exact amounts and the returned continuation. Reuse a request/link/deadline only when actually supplied. Preserve partial funding and any pending approval. |
+| Card-pool capacity or payment service unavailable | Report the service blocker. A funded customer wallet does not repair service capacity; do not ask the user to top up for it. |
+| Funding settled and the service returns a resumable operation | Verify the same owner, recipient/merchant, money, unexpired approval and absence of prior submission; resume only that returned operation as directed. Funding alone grants no replay or new spending authority. |
+| `foregroundAction: await_settlement_notification` | End foreground polling and report the submitted/pending outcome once. Retain the same operation for the service notification or a later requested status read. |
+| Dispatch or merchant submission uncertain | Recover/reconcile the same operation; do not resume its submission or create a replacement. |
 
 ## Observe and recover the same operation
 
@@ -74,7 +110,7 @@ requires. `list_card_transactions` can provide evidence for that exact card;
 one incomplete page cannot establish that a charge is absent. Merchant paid
 confirmation, provider processing and durable settlement must be reported as
 separate observations. Verified purchased output belongs to the user; deliver
-it privately, preserving provenance and any seller continuation capability.
+it through the [result procedure](#deliver-the-purchased-result).
 
 Follow current financial and cleanup state. The legacy `freshStartAllowed`
 summary alone is not task-wide permission. A separately requested additional
@@ -83,9 +119,44 @@ identities and satisfy normal balance/approval limits. A service result that
 disallows fallback cannot be bypassed by another route or client.
 
 User cancellation preempts further payment actions. Use
-`cancel_checkout_session` for the exact workflow and follow cleanup and
+`cancel_checkout_task` for the exact workflow and follow cleanup and
 same-operation reconciliation. Cancellation is not proof of refund, release
 or settlement. Report preserved recovery state honestly and continue normal
 browsing or independently authorized work when available. Use
-`fail_checkout_session` only for an open workflow when its native terminal
+`fail_checkout_task` only for an open workflow when its native terminal
 failure/cleanup contract directs it; preserve existing terminal outcomes.
+
+To describe an old payment as safely released for replacement, read its current
+closed workflow and require `cleanupDisposition: released_pre_submit` or
+`released_after_failure`, `settlementStatus: not_started` or `failed`, and
+`nextAction: none`. Failure/expiry alone proves no release. These facts do not
+authorize new spending or release another operation's hold. Other cleanup
+variants follow their actual service continuation; do not infer a usable branch
+from a legacy description or schema mismatch.
+
+For x402 `upto`, the approval maximum is a ceiling; the verified
+`amounts.customerDebit.actual` is the charge. Zero actual debit plus confirmed
+reserve release means no charge. Financial settlement and product fulfillment
+can differ: settled money with missing/unverified output needs same-operation
+support/retrieval, never another purchase. A seller continuation needs its
+documented exact endpoint, method and complete inputs; do not probe an invented
+order/invoice route or construct private signatures.
+
+## Deliver the purchased result
+
+Present the integrity-verified original before an optional summary:
+
+| Returned output | Presentation |
+| --- | --- |
+| `deliverable.json` / `.text` | Meaningful seller JSON or bounded text. |
+| Image / binary attachment | The host's image/file output; never dump Base64 or invent a public URL. |
+| Purchased license, eSIM QR/LPA or API credential | Deliver privately to its owner: this is the purchased product even if fields are called `credentials`, `key` or `token`. |
+| Explicit seller bearer/continuation capability | Keep private; use only its supported continuation to retrieve the product. Show the final deliverable, not that capability. |
+
+Retain media type, length, digest and expiry with the result; report an integrity
+or ownership mismatch rather than reconstructing output. For a completed x402
+run, `wait_payment({taskId, timeoutMs: 0})` retrieves the same original without
+paying. An embedded `magicpay` resource URI identifies returned bytes; it is not
+a browser URL or a separate resource-read endpoint. Keep already retained output
+available even if a continuation expires. Receipt attachment follows
+[accounts](accounts.md#receipts-and-invoices) on the same payment operation.

@@ -6,6 +6,9 @@ Run `npx skills add aftercard/skills --skill aftercard`. The installer supports
 Codex, Claude Code, Cursor, Grok Build, OpenClaw and other compatible local
 agents. Select the agent and scope you actually use. This installs guidance;
 connect the remote MCP separately through the host's native settings.
+The current Skills CLI requires Node.js 22.20 or later; check the selected
+installer version's [prerequisites](https://github.com/vercel-labs/skills#install-a-skill).
+This is an installer requirement, not a prerequisite for connected MCP use.
 
 ## Hermes
 
@@ -24,9 +27,13 @@ connection are separate actions.
 
 Current OpenClaw supports native remote MCP under `mcp.servers`: use the
 exact endpoint https://mcp.aftercard.ai/mcp, `transport: "streamable-http"` and
-`auth: "oauth"`, then `openclaw mcp login aftercard` when needed. Inspect
-an existing matching connection first. Use Settings > MCP or the documented
-`openclaw mcp` commands; do not add a custom bridge or switch identities.
+`auth: "oauth"`. Inspect an existing matching connection first. Prefer
+Settings > MCP > Sign in on the Gateway that owns the connection when available.
+Plugin-declared servers use the plugin's Sign in/Accounts flow. The CLI login
+works offline for servers under `mcp.servers` and requires that installation's
+Gateway to be stopped; do not interrupt a running task to substitute this path.
+Use the [current native auth guidance](https://docs.openclaw.ai/tools/mcp#an-http-server-needs-authorization);
+do not add a bridge or switch identities.
 Older clients without native remote MCP/OAuth must update through their normal
 supported path or report the limitation. A skill adds no missing host tools.
 
@@ -92,8 +99,29 @@ Browser capabilities, payment policies and takeover remain host-specific.
 Read the skill's connection reference. Discover tools in the current task,
 read capabilities and authenticated status, then balance. Installation,
 authentication, widgets and checkout are separate checks. No test purchase is
-needed for connection verification. Version 1.0.3 documents the service
+needed for connection verification. Version 2.0.2 documents the service
 contract; it does not turn a simulated provider into a live payment rail.
+
+## Recover the observed phase
+
+| Observed state | Supported next action |
+| --- | --- |
+| Skill/plugin absent | Install once through the selected host’s native path above; reuse any matching MCP connection. |
+| Host reports a corrupt or incomplete bundle | Replace that exact installation from the verified release through its native manager; preserve connection credentials. |
+| OAuth pending | Reuse the flow and its supported bounded completion wait; observe host completion, then discover tools in this task. If still pending at its deadline, report pending. |
+| OAuth completed, tools inactive | Use the host’s supported activation/refresh action once for that connection; preserve completed sign-in and report any remaining activation error. |
+| Authenticated service call fails | Report the returned service error and follow that connection’s supported retry/recovery; reinstalling guidance does not repair the service. |
+
+Missing tools alone do not identify a phase. An opened or closed OAuth window
+is not completion, and the user need not send a “done” message.
+
+## Remove
+
+Use the native manager for the exact skill/plugin and installation scope.
+Removing guidance does not log out the MCP connection or revoke remote access.
+Use the connection’s native logout/disconnect control only for that requested
+action; remote revocation is separate. Keep unrelated skills and shared
+marketplace sources.
 
 ## Update
 

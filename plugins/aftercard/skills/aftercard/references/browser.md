@@ -20,20 +20,130 @@ and its exact final action are authorized. A material change requires the
 owning service's new decision/approval path; never reuse the earlier approval
 for a different merchant or amount. Respect explicit user “do not buy”.
 
-Authorized one-time card and Memory values may be visible to the model and
+Authorized one-time card and Secrets values may be visible to the model and
 host. Use them only through host-supported targeted input for the approved
 tab and task, including documented per-key input or a host REPL wrapper when
 required. This does not provide transcript isolation. Do not quote values,
 save them in helper scripts/files/logs or exported evidence, inject credentials
 with arbitrary page-evaluation code, or send them to another site/message.
 
+## Prepare the exact payment
+
+For a USD checkout, use the exact merchant money unchanged as both `amount`
+and `maximumDebit`. For a non-USD checkout, keep the observed merchant amount
+and currency in `amount` and prepare one fixed USD `maximumDebit` before the
+first `run_browser_payment` call:
+
+1. Fetch the direct pair
+   `https://api.frankfurter.dev/v2/rate/{MERCHANT_CURRENCY}/USD` using the
+   observed uppercase ISO currency. Require successful JSON with matching
+   `base`, `quote: "USD"` and a positive `rate`. Use that forward rate, not a
+   search snippet, broad table, inverted pair or estimated rate.
+2. Treat the rate as USD per merchant-currency unit. Apply the existing 5% FX
+   allowance and round upward once, at the final USD cent:
+   `usdCents = ceil(merchantMajorAmount × rate × 1.05 × 100)`.
+3. Pass `maximumDebit: { quantity: String(usdCents), scale: 2, currency: "USD" }`.
+   Keep the local `amount` unchanged; atomic quantities in different currencies
+   are not comparable. Use exact decimal/integer arithmetic for the calculation.
+4. Show the merchant money, pair/date/rate, 5% allowance and resulting USD
+   ceiling. A failed fetch, invalid pair or failed calculation stops preparation
+   before a run is created.
+
+The first call binds this ceiling. Keep the same `maximumDebit`, merchant
+amount/currency, `clientRequestId` and the payment run’s returned `taskId` through approval, ordinary-field
+resolution, waiting and recovery. Do not refetch or reprice an existing run.
+Use the composed run directly; it owns balance, approval and card preparation.
+
+Use `browserExecution.card.billingAddress` for the card's billing address in
+preference to a personal address from Secrets. Adapt its supplied street, city,
+postal code and country to the current rendered controls. If a required
+component remains missing, discover saved details and use
+`resolve_browser_form_values`, or the run's returned secure ordinary-field
+continuation, for only the missing requirements. Keep the same payment run;
+missing billing details belong in that secure flow, not ordinary chat/native
+input. Do not invent components or save the card address as a personal address.
+
+Carry ordinary contact details already supplied or returned by this purchase's
+ready Secrets batch into `run_browser_payment` without another collection:
+
+| Input | Use for |
+| --- | --- |
+| `ordinaryValues` | Known current-run ordinary values, with matching role and value-free `fieldRef`; phone uses the full logical number. |
+| `ordinaryFields` | Unresolved saved references with exact item/field revisions. |
+| `ordinaryFieldRoles` | Requirements still genuinely missing. |
+
+Keep protected/card values out of these ordinary inputs. The checkout's session
+is distinct from the general form/task session; reuse its exact returned ID.
+For a processor-hosted checkout, `merchantDomain` is the checkout host;
+`sellerDomain`/`sellerName` identify the observed actual seller, not the processor.
+
+For travel, retain included cabin baggage and decline optional checked bags,
+insurance, paid seats, priority, meals, assistance and donations unless requested
+or covered by an applicable preference. Summarize once with the final total.
+Ask only for mandatory unresolved choices or material changes. Follow child
+seating rules, using free adjacent assignment where available; do not silently
+accept separation or a mandatory added charge.
+
+## Recover, submit and observe
+
+For a failed field action, reobserve the visible enabled control and its current
+frame; use supported targeted typing/per-key input if fill fails. Replace only
+incorrect partial input. Verify ordinary values normally; verify payment fields
+by presence and merchant validation without reading credentials back.
+
+Before final dispatch, a stale tab handle does not invalidate the Browser or
+payment: reacquire the exact live tab, replay the same run/key if needed, and
+refill only missing allowed fields. Reopen the approved checkout only if the tab
+is gone and dispatch definitely has not occurred. Navigating to the current URL
+is not a safe reload of a POST-backed checkout; recover through its retained
+merchant flow. If bounded recovery fails, hand off that checkout.
+
+| Observed state | Record and continue |
+| --- | --- |
+| Payment-method selector, next step or field error | Ordinary interaction in this run; not payment dispatch. |
+| Total changed before the final action | Record `not_clicked`, `not_submitted`, `nonSubmissionReason: checkout_total_changed`; follow [cleanup](payments.md#observe-and-recover-the-same-operation) before a fresh exact approval. Stabilize the total first; ask again only for changed authority/budget. |
+| Final payment action activated once | Record `clicked` with the separately observed submission and merchant outcome. Keep that isolated final action distinct from filling/navigation. |
+| Timeout/interruption overlaps final activation | Record `click_uncertain`, `submission_unknown`; observe/reconcile the same attempt. No refresh, refill, navigation or another Pay to recover. |
+| Receipt, merchant error or processing deadline | Update the merchant outcome/evidence on the original run/attempt and `clientResultId`; preserve the original click result and submission state. A later error does not prove non-submission. |
+
+After the final action, inspect fresh rendered state for receipt, error or human
+challenge; a spinner is intermediate. Use interruptible read-only observation
+within the host's limit, normally up to 60 seconds before recording pending.
+Hosted clients may supply their own processing loop. Read the exact card's
+transactions when useful: a processor name may differ from the seller and an
+empty/incomplete page does not prove no charge. Report confirmed merchant
+purchase promptly, with provider processing/settlement stated separately.
+
+For example, after a timeout recorded uncertain dispatch, a later paid receipt
+updates only merchant evidence. Reuse the actual original IDs/key:
+
+```json
+{
+  "taskId": "10000000-0000-4000-8000-000000000001",
+  "executionAttemptId": "20000000-0000-4000-8000-000000000001",
+  "clientResultId": "original-browser-result-1",
+  "result": "click_uncertain",
+  "submissionState": "submission_unknown",
+  "merchantOutcome": "success",
+  "valueFreeEvidence": {"observation": "Paid booking receipt observed after the original timeout"}
+}
+```
+
+A completed composed run already closes its workflow; do not call a second
+closer. Finish the requested delivery through the merchant's observed download
+or success link, including its original product page when needed. Present the
+purchased file through supported host output; otherwise report paid and
+retrieval blocked separately. A purchased PDF is the product, not an invoice.
+
 ## Login, signup and forms
 
 Inspect the page and URL-scoped saved `login.website` fields before asking
-whether an account exists. Use [Memory](memory.md) to discover and release
+whether an account exists. Use [Secrets](secrets.md) to discover and release
 exact fields, or `resolve_browser_form_values` to collect missing values
 securely. Reuse the saved account. Signup is a separate user-intended action
 when needed, not permission to accept unrelated terms or create identities.
+Recommend a dedicated new merchant account when none is usable or the user
+wants separation; preserve the existing account by default.
 
 For SSO, OTP, passkey, QR or a challenge requiring a human, use one supported
 handoff and keep the same cart/task. Do not expose credentials or claim the
@@ -42,15 +152,12 @@ the actual current page and operation; do not reconstruct a checkout from
 stale handles or repeat a possibly submitted purchase.
 
 Non-payment form preparation does not authorize submitting it. Resolve saved
-details and missing fields through the same Memory workflow. Saved card,
+details and missing fields through the same Secrets workflow. Saved card,
 default-card changes, recurring authorization and the purchase are distinct
 actions. A one-time checkout card is not a permanent merchant-locked card;
 claim merchant restrictions or approval enforcement for later charges only
 when verified provider support establishes both. Never make a test charge or
 silently delete a saved card or transfer subscriptions.
 
-The agent's ready email is the default checkout receipt address unless the
-user chose another or the merchant already fixed/submitted one. Do not
-substitute an account's personal identity email without that intent. Report
-merchant confirmation promptly while distinguishing unresolved provider
-processing/settlement. Follow [payment recovery](payments.md) for uncertainty.
+Receipt-email precedence and original-document handling follow
+[accounts and receipts](accounts.md#receipts-and-invoices).

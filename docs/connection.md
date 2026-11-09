@@ -35,5 +35,6 @@ Use the host's built-in browser for browser checkout. Preserve the exact approve
 ## Optional reusable skill
 
 For a compatible local agent, install the reusable workflow with `npx skills add aftercard/skills --skill aftercard`. This installs guidance, not another MCP connection. Reuse the exact authenticated connection configured above.
+The current Skills CLI installer requires Node.js 22.20 or later. This requirement applies only to installation, not an already connected MCP workflow.
 
 Browser skill uploads, native plugins and Hermes tap installation are described at https://github.com/aftercard/skills/blob/main/docs/install.md. A skill installation does not prove OAuth or browser-payment capability.
