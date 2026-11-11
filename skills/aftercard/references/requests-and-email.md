@@ -35,11 +35,19 @@ their native input or bounded request wait; a timeout does not create a decision
 Use `decide_request` for an unambiguous reply on that same request, preserving
 the opaque selected option ID, then `wait_request`. Clarify ambiguity without
 creating a sibling or inventing an option. Respect a recorded denial or
-cancellation. The first durable decision wins across channels; report that
+cancellation. The first durable decision wins across channels; use that
 result rather than a local draft. After an interrupted wait, read/continue that
 same request and honor any later recorded cross-channel winner. Answer a side
 question while leaving the decision pending; do not immediately loop waits
 over the unanswered question. A choice is not approval to pay or book.
+
+After the selected-state card/receipt is visible, continue with one short
+next-action message: “Отлично, проверю доступные места и актуальную стоимость.”
+Do not prefix it with “Выбрана Ласточка…”, “You chose…”, or repeat the option's
+title, route, date, times, attributes or price. This also applies after revised
+options and a decision recorded in another channel. If the receipt completes
+the user's goal, finish without an ordinary follow-up. If a new material change
+needs attention, explain that change once through its owning decision flow.
 
 Normalize each real option into a short title, price with currency and
 total/per-person/billing basis, ordered comparable attributes with units, exact
@@ -59,7 +67,7 @@ When the user changes a choice constraint, use the existing allowed
 task/session using one new stable choice key. Do not deny the old request to
 clear it. One active turn/continuation owns the search. Status/side questions
 leave the choice pending; a dismissed picker is not denial. Preserve the first
-stored decision and omit a repeated “you chose” when the selected state is visible.
+stored decision and follow the next-action rule above when the selected state is visible.
 
 Necessary ordinary facts, such as the desired size or destination, use the
 host's native input. Obligatory login/QR or challenge handoffs keep their
@@ -76,6 +84,34 @@ for payment approval.
 Keep one request and exact continuation while waiting. Only a service-issued
 approval OTP path may accept an approval code as directed; never confuse it
 with OAuth, merchant login or Secrets values, which keep their secure inputs.
+
+## Reminders while waiting for the user
+
+When the host supports a delayed wait reminder, prepare one for each blocking
+step of an active purchase. Write a short, informal continuation of the current
+conversation: name the purchase, ask whether to continue it or cancel it, and
+briefly mention the outstanding action when useful. Use the conversation's
+current language and tone, including an explicit language preference. A short
+“OK”, number, merchant page or quoted text does not change that language.
+Start with the purchase question, without a greeting or introduction.
+For example: “Still want to go ahead with the Omni 12-week membership, or should
+I cancel this purchase? I'm just waiting for you to sign in.” Adapt the wording
+and language; this is not a fixed template. Keep credentials and private form
+values out of the draft, and do not claim prices or availability were rechecked.
+
+Use the host's preparation tool when available: immediately before a native
+blocking question, or after publishing the exact returned remote request.
+Then wait normally. The host sends the draft once after seven minutes only if
+that same step is still unanswered, and owns cleanup and the original expiry.
+An answered step followed by a different blocking step gets its own reminder.
+Restoring the same step preserves its identity and cannot produce repeated
+nudges. Without host support, do not claim a reminder is scheduled or keep a
+model/browser running just to measure seven minutes.
+
+“Continue” retains the purchase and its outstanding input; it is not an answer
+to missing details or a payment approval. An explicit cancellation follows the
+existing exact-task cancellation path. Canceling this purchase is not an
+instruction to cancel an existing merchant subscription.
 
 ## Email
 

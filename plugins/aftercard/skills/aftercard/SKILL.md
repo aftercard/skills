@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires the Aftercard remote MCP connection. Browser checkout also requires a host-supported browser and permitted payment input/actions.
 metadata:
   author: Aftercard
-  version: "2.0.2"
+  version: "2.0.6"
 ---
 
 # Aftercard
@@ -24,6 +24,8 @@ Before resolving saved or missing form details, read [Secrets](references/secret
 Retain usable saved fields and collect only missing requirements. Map every
 requested field once to its current template; follow that reference for mapping
 corrections and the original request's continuation.
+For identity forms, match the selected document type and its saved Full name;
+resolve all known requirements together before collecting missing details.
 
 Before asking task-preference questions, read [Research](references/research.md)
 and resolve the current saved defaults. Ask only what the next useful action needs.
@@ -36,12 +38,22 @@ and resolve the current saved defaults. Ask only what the next useful action nee
 | Balance or spending | Call `get_payment_balance` directly for balance; use `list_recent_transactions` for scoped activity. Follow [payments](references/payments.md) for pagination and settlement distinctions. |
 | Clarify a task, research, compare or find a provider | [Research](references/research.md): consult `resolve_preferences` before optional questions and `search_skills` when guidance helps. `search_web`, `read_web_pages`, and `search_provider_access_methods` serve different facts. Route pending product or material next-step decisions to [choices](references/requests-and-email.md), including during research. Research and choosing an option do not authorize buying. |
 | Pay, transfer, fund or recover a payment | [Payments](references/payments.md); use the current composed payment runs and their exact continuations. A price-only request ends at a quote. |
-| Checkout, sign-in or an ordinary browser form | [Browser and merchant accounts](references/browser.md); the host owns the page. Discover saved details before asking for them. |
+| Checkout, sign-in, an ordinary browser form or control returned from a human | [Browser and merchant accounts](references/browser.md); the host owns the page. Discover saved details before asking for them and continue the same task after handback. |
 | Use, save or change personal/organization details | [Secrets](references/secrets.md); metadata discovery precedes exact materialization. Explicit Save uses the supplied values and the current save contract. |
 | A material unresolved option or another human decision | [Choices and email](references/requests-and-email.md); preserve one durable request and its stored options. |
 | Read or send agent email | [Choices and email](references/requests-and-email.md); reading does not authorize sending, and a prepared draft is not sent. |
 | Account/KYC or receipts | [Accounts and receipts](references/accounts.md); distinguish preparation, merchant outcome and provider settlement. |
 | Recurring checkout, signup/enrollment terms, saved subscriptions, next charge, selected cancellations, reminder replies or cancellation handoffs | [Subscriptions](references/subscriptions.md); inspect the final selected offer, collect full billing terms, then follow the existing approval and merchant workflow. |
+
+## Parallel research
+
+Use the host's native parallel agents when independent research would improve
+coverage or speed. Read applicable `search_skills` guides before dividing the
+work. Give each worker a distinct question, relevant task constraints and the
+guide instructions needed for its assignment. Ask for sources and uncertainty;
+compare and verify the findings in one answer. Keep checkout, payment and
+shared-browser actions with the parent. When delegation is unavailable, batch
+independent reads if supported or research sequentially.
 
 ## Name the task
 
@@ -98,6 +110,9 @@ not a public reply. An explicitly presented result card already answers the
 user. When it fulfills the goal, finish the task and end the turn without an
 ordinary restatement of its title, price, source or caveats. A genuinely new
 blocker or necessary next action can follow once.
+After a visible selection receipt, say only the next meaningful action, for
+example “Great, I'll check available seats and the current price.” Keep the
+selected option's facts in its receipt; follow [choices](references/requests-and-email.md).
 Use exact money formatting and verified amounts. Keep internal IDs, card
 values, tokens and unrelated private details out of ordinary replies and
 exported evidence. Normal screenshots and host-supported targeted input are

@@ -130,9 +130,3 @@ For search controls, domain filters express hard source constraints; they are
 not a reason to exclude useful independent reviews. Publication-date filters
 and fetch freshness are separate. Inspect the current tool's supported modes
 and restrictions; read full page text when highlights omit conditions.
-
-Independent evidence gathering may use the host's native delegation when it
-is available, permitted and useful. Otherwise use the same method sequentially.
-Do not require another agent framework, multiply purchases or delegate payment
-authority merely to parallelize research. Preserve the task and bring verified
-evidence back into one decision with limits made clear.

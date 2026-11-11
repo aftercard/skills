@@ -37,14 +37,62 @@ which document is required.
 | Merchant document type | Secrets template | Number fields |
 | --- | --- | --- |
 | International/travel passport; Russian “Заграничный паспорт” | `identity.passport` | `templateFieldKey: "passport_number"` |
-| National ID or internal/domestic passport; Russian “Паспорт РФ” or “Внутренний паспорт” | `identity.national_id` | `templateFieldKey: "document_number"`; separate `series` when applicable |
+| National ID or internal/domestic passport; Russian “Паспорт РФ” or “Внутренний паспорт” | `identity.national_id` | `templateFieldKey: "document_number"`: the complete number, including series when the document has one |
 
 Use a suitable saved document that the merchant accepts, selecting its matching
 document-type option and re-observing the form when needed. Keep its number,
-series, issuer and issue/expiry dates tied to that same document. An incomplete
+Full name (`legal_name`), sex, issuer and issue/expiry dates tied to that same
+document when available. “Паспорт РФ” is a National ID; do not select or collect
+an international passport merely to get its sex or satisfy a generic passport
+recipe. National ID has one complete `document_number`; never create a separate
+Series field or a second request for that part. An incomplete
 international passport does not rule out a usable national/internal document;
 check the accepted types before collecting a missing number. If the type remains
 materially ambiguous, clarify that type once before collecting or filling.
+
+### Country-first National ID and driving licence forms
+
+Discover the selected template's `countryField`, `countryLayouts` and current
+field definitions. National ID and driver's licence forms begin with Issuing
+country; an unknown country is selected inside that same request, then its
+layout appears. Other countries use the generic layout. Keep the original
+resolver, logical-field mapping and `clientRequestId` after country selection
+and Save. A known saved country remains its approved read-only binding; never
+ask for it again just to select a layout. Issuing country is not nationality
+or residence and must not be inferred from the journey.
+
+US National ID means a state-issued non-driver ID with its issuing jurisdiction,
+not SSN or a passport. Keep State ID number and the separate card Document
+Number distinct. For Indonesia, retain the actual SIM number: an older licence
+must not inherit the KTP NIK merely because new licences can use NIK. For UAE,
+keep Emirates ID, its separate Card number, licence number and Traffic code/file
+number distinct. Do not derive birth date, sex or expiry from number segments.
+Use the name printed on the selected document with its required script.
+
+The default layout is not the registry of valid requested fields. Map a genuine
+merchant requirement to its registered country-applicable key even if omitted
+from the default form, such as a German CAN (`templateFieldKey: "access_number"`). Optional extras
+stay optional and never expand the approved resolver output. Partial saved
+items remain usable; do not recollect the number, add a Series field, switch
+to a custom group or request another passport because the country was unknown.
+
+### Names and required script
+
+Match the name to the actual document and rendered form. A Latin Personal
+profile can suit an international form while a Russian internal-passport form
+may require Cyrillic. Before recollecting names, check the selected document's
+saved Full name and any suitable profile variant. Metadata saying `legal_name`
+exists does not establish its script or release its value: request that exact
+field under the current policy, then inspect the authorized result.
+
+Use a compatible document name. Split it into given/family/middle controls only
+when the order and parts are unambiguous; do not guess compound surnames or
+invent reverse transliteration. An absent optional patronymic stays absent.
+If suitable spelling or a required distinction is genuinely missing, collect
+only that requirement through the current typed Secrets form/correction flow.
+Preserve a Latin profile rather than overwriting it for one domestic form.
+Describe an observed field requirement, not “your name is wrong”; do not claim
+the merchant rejected Latin unless its rendered validation establishes that.
 
 ## Select saved fields and map the form
 
@@ -55,6 +103,13 @@ protected data. Secrets consent authorizes only that use, not payment or
 submission. Retain selected entities, secret revisions and the typed collection
 through a multi-field/batch continuation; replay the unchanged resolver as
 directed rather than dropping previously resolved fields or starting siblings.
+
+Inspect the complete current form first, then put all known compatible fields
+across its people, profiles and documents in one resolver/materialization batch
+for one saved-details review. Include the selected document's name/sex when the
+form needs them; do not request each document or number part in successive
+approvals. Reuse the ready batch throughout this form. A genuinely new field
+or expired release follows the owning service's policy, never a blanket restart.
 
 Reuse suitable ready fields, including Title from Personal profile. Incomplete
 items are valid; a missing Passport does not make saved profile fields missing.
@@ -190,6 +245,11 @@ question beside an already visible request.
 
 Approval and collection can be separate service-issued stages of the same form.
 Keep one active decision per stage; a status question does not create another.
+After Save/Use once or context loss, first recover the exact original resolver,
+body, task and clientRequestId and read its recorded decision. A saved optional
+Full name/sex extra was not released unless included in the ready output; obtain
+only a newly needed field through its supported policy. Never re-request the
+already resolved document number because that extra was not in the old batch.
 
 ## Explicit Save and updates
 

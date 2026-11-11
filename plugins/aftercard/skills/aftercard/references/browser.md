@@ -53,6 +53,8 @@ The first call binds this ceiling. Keep the same `maximumDebit`, merchant
 amount/currency, `clientRequestId` and the payment run’s returned `taskId` through approval, ordinary-field
 resolution, waiting and recovery. Do not refetch or reprice an existing run.
 Use the composed run directly; it owns balance, approval and card preparation.
+Follow its [card-source guidance](payments.md#choose-a-checkout-card) for personal
+saved cards, one-time entry and merchant confirmation without issuer settlement.
 
 Use `browserExecution.card.billingAddress` for the card's billing address in
 preference to a personal address from Secrets. Adapt its supplied street, city,
@@ -145,11 +147,51 @@ when needed, not permission to accept unrelated terms or create identities.
 Recommend a dedicated new merchant account when none is usable or the user
 wants separation; preserve the existing account by default.
 
-For SSO, OTP, passkey, QR or a challenge requiring a human, use one supported
-handoff and keep the same cart/task. Do not expose credentials or claim the
-handoff succeeded before observing the result. After interruption, recover
-the actual current page and operation; do not reconstruct a checkout from
-stale handles or repeat a possibly submitted purchase.
+Collect only the method currently shown: an email-only/passwordless page does
+not need both username and password. Scope saved login discovery to the actual
+credential destination after redirects; `www.example.com` and
+`login.example.com` can differ. Do not invent aliases or move credentials to a
+different site to obtain a match. Verify sign-in on the resulting page, then
+resume the same selected item and cart.
+
+For ordinary passenger, contact, address and other form fields, do the work in
+the host browser using the details already supplied or authorized. If fields
+are blank, invalid or an attempted Continue leaves the page unchanged, inspect
+the current controls and validation, correct or refill what is needed, and
+try the non-payment step again. Recover saved details through the same Secrets
+resolver when earlier values are absent from the current context; follow its
+exact release/consent recovery rather than asking the person to fill the whole
+form. A stalled page or lost field contents alone is not a human-only challenge.
+
+### Human browser handoff and continuation
+
+For SSO, OTP, passkey, QR or another observed step requiring a human, use one
+supported handoff and retain the same live browser, cart and task. Explain the
+specific step the person must handle and that **Hand off to agent** returns
+control so you can continue. Keep the host's durable input wait active while
+the person controls the browser.
+
+When the host returns browser control, resume the original task in that browser
+immediately. In the Aftercard hosted relay, **Hand off to agent** (or the earlier
+**Done**) resolves the existing input and automatically resumes the paused
+agent; no extra “go on” is needed. Other hosts own their documented resume path.
+Inspect fresh rendered state first, including the current tab and validation.
+The handback proves that the person returned control, not that login, form
+submission or payment succeeded.
+
+Continue the remaining authorized work from what you observe. If an ordinary
+form is still incomplete, recover the authorized details and correct/refill it
+yourself before retrying the next non-payment step. If another human-only step
+remains, ask only for that specific blocker through the same supported input
+flow. Finish the turn when the task is fulfilled or a real durable wait exists;
+a status report about the unchanged page does not complete the task.
+
+Preserve the original task, checkout, requests, payment run, approval and
+submission evidence. After interruption, recover the actual current page and
+operation. Do not reopen or reconstruct a checkout merely because control
+changed hands, or repeat a possibly submitted purchase. If the original browser
+is unavailable, follow the same-operation recovery guidance above. A handback
+adds no payment authority.
 
 Non-payment form preparation does not authorize submitting it. Resolve saved
 details and missing fields through the same Secrets workflow. Saved card,

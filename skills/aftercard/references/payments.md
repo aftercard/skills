@@ -29,6 +29,14 @@ reconstruction. Unknown amounts or currencies remain unknown.
   obtain the exact request from current official provider documentation and
   use `run_x402_payment`. Do not pay as a probe or treat a registry description
   or historical token-label error as authority to change the request.
+  Validate provider-specific identifiers and units before binding paid input:
+  a flight API's airport/location ID is not a city name, and a service duration
+  such as five minutes is not its 300-second payment-authorization window.
+  Preserve the user's airport scope; do not silently select one airport from a
+  multi-airport city. A bound request stays unchanged even when its input is wrong.
+  Report an unsupported method as a limitation of that exact endpoint, not proof
+  the whole provider is broken. Missing payer allowance/liquidity does not
+  authorize a gas top-up, wallet switch or a separate approval transaction.
   After explicit acceptance of a quote, preserve its `acceptedQuoteRef`,
   original clientRequestId and exact request. The execution maximum debit may
   be tightened to the accepted fee-inclusive debit, but must remain at least
@@ -44,6 +52,44 @@ records; one record’s status does not establish another’s outcome. Approval 
 Do not ask for a redundant chat confirmation before or after Aftercard's
 approval, repeat an approval, or replace it with a generic action request.
 The host's own permissions and required confirmations still apply.
+
+## Choose a checkout card
+
+An owned issued Aftercard and a personal card saved as `payment.saved_card` in
+Secrets are separate sources. A saved-card count never proves issuance or
+Aftercard balance. Follow the current `cardGuidance` message and actions from
+status/capabilities or the browser run. Issuance is the recommended option when
+available; the user may use a saved card or add their own instead. Report pending,
+unavailable or unknown issuance honestly. Do not initiate issuance from guidance.
+
+Pass `cardChoice` only for an explicit choice. When the run returns
+`state: "input_required"`, present its existing `cardInputRequest` through the secure
+request form, then continue that same `taskId` with `wait_payment`. The service
+selects exact saved revisions, collects only missing fields and binds the source
+before payment approval. Card entry defaults to **Use once**; **Save this card**
+is an explicit choice. Retrying cannot repeat Save or switch the bound source.
+Keep PAN and CVV in the protected form and scoped browser output, never chat or
+generic Secrets materialization.
+
+For `fundingSource: external_card`, the personal card funds the merchant directly.
+The purchase does not require or debit Aftercard wallet principal; normal spend
+limits and payment approval still apply. A visible order confirmation can complete
+the merchant workflow while issuer settlement remains **unverified**. Report that
+distinction. Include this exact value-free evidence when recording a confirmed
+order on the original submitted attempt. Put this object inside `valueFreeEvidence`:
+
+```json
+{"merchantConfirmation":{"kind":"order_confirmation","executionAttemptId":"<original attempt UUID>","merchantDomain":"<exact checkout host>","amount":{"quantity":"1250","scale":2,"currency":"USD"},"orderReference":"<visible order ID>","visible":true}}
+```
+
+Use the observed amount, currency and order reference. Missing or mismatched
+evidence remains unresolved; a success flag alone is insufficient. An uncertain
+click keeps `submission_unknown` even if an order later appears; follow the same
+attempt's recovery and never submit again to obtain better evidence.
+For a pending personal-card result, continue observing that checkout. Record a
+later confirmation on the same attempt and `clientResultId`, preserving the
+original `clicked` and `submitted` facts, then use `wait_payment` to recover the
+same operation. Personal cards have no Aftercard issuer-settlement notification.
 
 ## Funding
 
@@ -118,6 +164,12 @@ purchase must explicitly authorize possible duplicate charges, use fresh
 identities and satisfy normal balance/approval limits. A service result that
 disallows fallback cannot be bypassed by another route or client.
 
+An `invalid_payment_run_failure` with `durableState: unknown` establishes no
+payment outcome. Keep the same run/client request identity and follow its
+next action to repair the existing connection or check that payment's status.
+A malformed or lost response is neither a balance shortfall nor permission for
+a replacement.
+
 User cancellation preempts further payment actions. Use
 `cancel_checkout_task` for the exact workflow and follow cleanup and
 same-operation reconciliation. Cancellation is not proof of refund, release
@@ -133,6 +185,15 @@ closed workflow and require `cleanupDisposition: released_pre_submit` or
 authorize new spending or release another operation's hold. Other cleanup
 variants follow their actual service continuation; do not infer a usable branch
 from a legacy description or schema mismatch.
+
+The explicit `released_platform_liability` disposition is different: when the
+workflow is canceled, the operation is `written_off` (reported as
+`CARD_CANCELLATION_WRITTEN_OFF`) and `nextAction: none`, the customer's hold was
+released and Aftercard assumed the unresolved cost. Issuer settlement can remain
+pending. Report those facts, never a verified decline or pre-submit release.
+Keep the old attempt closed. Before a fresh purchase, verify merchant failure
+and no booking, then follow the service's allowed continuation with fresh exact
+approval, budget and funding checks; this release does not reset spending limits.
 
 For x402 `upto`, the approval maximum is a ceiling; the verified
 `amounts.customerDebit.actual` is the charge. Zero actual debit plus confirmed
