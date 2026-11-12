@@ -401,7 +401,7 @@
   },
   {
     "name": "list_provider_mcp_tools",
-    "description": "Inspect tools, schemas, and instructions at an enabled public Streamable HTTP MCP endpoint from MagicSearch. Read provider guidance before calling.",
+    "description": "Inspect tools, schemas, and instructions at an enabled public Streamable HTTP MCP endpoint from Marketmap. Read provider guidance before calling.",
     "annotations": {
       "readOnlyHint": true,
       "destructiveHint": false,

@@ -94,6 +94,31 @@ Preserve a Latin profile rather than overwriting it for one domestic form.
 Describe an observed field requirement, not “your name is wrong”; do not claim
 the merchant rejected Latin unless its rendered validation establishes that.
 
+## Saved document photos and portraits
+
+Photos are optional `file` fields on the same person's saved record:
+`identity.passport.document_photo`, National ID/licence front and back photo fields, and `profile.person.portrait`. Match the actual requested document
+and side; a portrait is a separate website profile photo, never a substitute for
+an ID scan, live selfie, camera capture or liveness check.
+
+Discover and select the exact photo field through the normal footprint and
+`materialize_secrets`/form resolver, preserving the record revision and its reuse
+permissions. A ready result includes `file` with the original `url`, `filename`,
+MIME type, byte size and expiry. Use the host's supported file upload mechanism
+for that exact website. Hosted browsing offers `browser_upload_photo` with the
+current visible upload control's snapshot `target` and released `file.url` and
+`file.filename`. It supplies the file; observe the website acknowledgement and
+validation before continuing. Submission retains its existing task authority.
+
+If a photo is missing, direct the owner to Attach photo in that record's Secrets
+editor and Save, then rediscover it. Photo upload is not a text collection:
+never ask for base64, invent an image URL, or paste an opaque photo reference into
+a text field. Keep original images and download credentials out of chat/logs and
+unrelated sites. Expired links require a fresh authorized release through the
+same task; keep the payment operation and checkout. A timeout may follow an
+already-started upload: inspect the current page before trying again. Report an
+unsupported host upload capability and use the existing human handoff when needed.
+
 ## Select saved fields and map the form
 
 Materialize exact selected secret revisions and field IDs through

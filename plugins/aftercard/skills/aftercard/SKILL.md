@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires the Aftercard remote MCP connection. Browser checkout also requires a host-supported browser and permitted payment input/actions.
 metadata:
   author: Aftercard
-  version: "2.0.12"
+  version: "2.0.13"
 ---
 
 # Aftercard

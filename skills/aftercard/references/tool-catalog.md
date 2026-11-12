@@ -164,7 +164,7 @@ Inspect the authenticated user’s preferences when requested. For task context 
 
 ## list_provider_mcp_tools
 
-Inspect tools, schemas, and instructions at an enabled public Streamable HTTP MCP endpoint from MagicSearch. Read provider guidance before calling.
+Inspect tools, schemas, and instructions at an enabled public Streamable HTTP MCP endpoint from Marketmap. Read provider guidance before calling.
 
 ## list_recent_transactions
 
