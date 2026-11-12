@@ -82,6 +82,14 @@ Archive an editable secret at its current revision. Stored fields and values are
 
 Record checkout failure with its stable key, code, and message. Preserve cleanup/recovery facts; failure alone does not prove non-submission.
 
+## get_aftercard_capabilities
+
+Read current payment-rail eligibility, execution mode, environment, and build identity for the selected agent.
+
+## get_aftercard_runtime_status
+
+Read the connected agent's identity, status, and resolved Secret policies with their revisions.
+
 ## get_aftercard_status
 
 Read connected account/agent status, scoped payment-rail eligibility, and Secret policies. Each section reports its own availability; this check authorizes no spending.
@@ -97,14 +105,6 @@ Read one checkout's observed payment outcome and evidence source; retain pending
 ## get_checkout_task
 
 Read one checkout's workflow state and current request.
-
-## get_magicpay_capabilities
-
-Read current payment-rail eligibility, execution mode, environment, and build identity for the selected agent.
-
-## get_magicpay_status
-
-Read the connected agent's identity, status, and resolved Secret policies with their revisions.
 
 ## get_payment_balance
 
@@ -244,7 +244,7 @@ Request all direct funding addresses or one asset's methods. Reuse requestKey on
 
 ## resolve_browser_form_values
 
-Resolve saved and missing form values. Keep partial saved selections; collect only missing requirements. Replay original inputs/clientRequestId after collection. Excludes cards, OTPs and wallet secrets; host fills.
+Resolve saved and missing form values. Keep partial saved selections; collect only missing requirements. Prefill each savable collection group with a meaningful secretName and description. Replay original inputs/clientRequestId after collection. Excludes cards, OTPs and wallet secrets; host fills.
 
 ## resolve_preferences
 

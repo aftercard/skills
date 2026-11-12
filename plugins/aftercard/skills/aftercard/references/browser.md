@@ -139,13 +139,37 @@ retrieval blocked separately. A purchased PDF is the product, not an invoice.
 
 ## Login, signup and forms
 
-Inspect the page and URL-scoped saved `login.website` fields before asking
-whether an account exists. Use [Secrets](secrets.md) to discover and release
+Inspect the current page first. If already signed in to the intended account,
+continue without another login or Secrets release. Ask which account only when
+ownership is ambiguous. Otherwise inspect URL-scoped saved `login.website`
+fields before asking whether an account exists. Use [Secrets](secrets.md) to discover and release
 exact fields, or `resolve_browser_form_values` to collect missing values
 securely. Reuse the saved account. Signup is a separate user-intended action
 when needed, not permission to accept unrelated terms or create identities.
 Recommend a dedicated new merchant account when none is usable or the user
 wants separation; preserve the existing account by default.
+
+If several suitable saved logins remain, use the existing Secrets candidate
+chooser for those accounts. Do not select the first match or add a separate
+account-existence question or generic choice beside that secure chooser.
+
+Website login email/username belongs to the site's `login.website` secret,
+not Personal profile. Do not bind a profile email as an existing account login
+or combine its email with another login's password. If the login identifier is
+missing, collect it in the typed Website login form; the authenticated form may
+prefill profile email as an editable suggestion. Confirmation there establishes
+the login identity; the agent must not copy profile values into the login.
+
+When collecting a login, follow [secret naming](secrets.md#name-secrets-for-their-purpose):
+prefill `collectionGroups[].secretName` with a service-specific name such as
+“Omni gym login” and `description` with its intended reuse. These are editable
+metadata, separate from the login email and password.
+
+If the merchant explicitly rejects credentials, keep the same browser/cart/task
+and follow [secure login correction](secrets.md#website-login-correction) first:
+update the existing Website login in the secure form, then try its new revision.
+Do not ask the person to sign in manually just because saved credentials were
+rejected. A challenge, outage or denied release is not an invalid-password result.
 
 Collect only the method currently shown: an email-only/passwordless page does
 not need both username and password. Scope saved login discovery to the actual
@@ -153,6 +177,22 @@ credential destination after redirects; `www.example.com` and
 `login.example.com` can differ. Do not invent aliases or move credentials to a
 different site to obtain a match. Verify sign-in on the resulting page, then
 resume the same selected item and cart.
+
+### Routine signup questions
+
+Complete low-impact administrative questions without interrupting the user.
+For “How did you hear about us?”, referral-source surveys and similar marketing
+fields, skip optional inputs; when required, prefer “Other”, “Prefer not to say”
+or a general answer supported by the current task, such as online search when
+that is how the service was found. If no neutral answer exists, choose the
+closest non-specific offered option. Do not invent a named referrer, referral
+code or personal history, or collect these answers as reusable Secrets.
+
+Decline optional marketing, newsletters, upsells and paid extras unless requested
+or covered by an applicable preference. Ask only when the unresolved answer
+materially affects price, eligibility, service, legal consent or an actual
+personal fact needed for the task. A required marketing-survey field alone is
+not a reason to create a choice request or stop signup.
 
 For ordinary passenger, contact, address and other form fields, do the work in
 the host browser using the details already supplied or authorized. If fields
@@ -165,11 +205,16 @@ form. A stalled page or lost field contents alone is not a human-only challenge.
 
 ### Human browser handoff and continuation
 
-For SSO, OTP, passkey, QR or another observed step requiring a human, use one
-supported handoff and retain the same live browser, cart and task. Explain the
-specific step the person must handle and that **Hand off to agent** returns
-control so you can continue. Keep the host's durable input wait active while
-the person controls the browser.
+For SSO, OTP, passkey, QR or another observed step requiring a human, or when
+the user explicitly chooses manual sign-in, use one supported browser handoff
+and retain the same live browser, cart and task. Explain the specific step and
+that **Hand off to agent** inside the browser returns control so you can continue.
+The handoff exposes **Open browser** only; do not add “I’ll sign in”, Done,
+Continue, a free-text answer or a separate choice between browser access and
+signing in manually. They are the same action. Keep the host's durable input
+wait active until browser control returns. An intent answer or opened link is
+not a completed handoff. If the link is unavailable or expired, use supported
+handoff recovery rather than asking for a substitute completion answer.
 
 When the host returns browser control, resume the original task in that browser
 immediately. In the Aftercard hosted relay, **Hand off to agent** (or the earlier

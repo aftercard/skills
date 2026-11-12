@@ -1,27 +1,27 @@
 {
   "repository": "aftercard/skills",
-  "version": "2.0.6",
-  "tag": "aftercard-v2.0.6",
+  "version": "2.0.12",
+  "tag": "aftercard-v2.0.12",
   "endpoint": "https://mcp.aftercard.ai/mcp",
   "sourceRepository": "aftercard/aftercard",
-  "sourceRevision": "443d117c7640cd40ac30086677ff9f658ed76d8a",
-  "sourceContentDigest": "d607eba277e4685c5956725671fafe341f0f36cf58cf09e483921e5c55c8ca90",
+  "sourceRevision": "f3b2c075d214b90777469b3947a1615b9d0e8f8e",
+  "sourceContentDigest": "ec1be4ff2afdf004377631a4b250a863ec834750a00baa5ea4f9f3f48a8eb353",
   "sources": [
     {
       "path": "apps/mcp/src/mcp/register-capabilities.ts",
-      "sha256": "e4369b806cdde9148bb7162f33ea58c04a14960bfc6258ed50e4e19aa6c03650"
+      "sha256": "b97e8cd3b832770c23465b1e826d03c43445e8feae787f1f4a3a59657a510ead"
     },
     {
       "path": "apps/mcp/src/mcp/server.ts",
-      "sha256": "44d6b7720d08e61da8588f1cc7bfb66d73be26f924a52038c06659d677e5e0d9"
+      "sha256": "442b0a74624ae690e1b4a0dca3168743824ce310d711d9a456293e26e8db3033"
     },
     {
       "path": "apps/mcp/src/mcp/tools/account-activity.ts",
-      "sha256": "7e20574fba91269abda819368fc57337c83c5b202bd18a143504d1c833945d29"
+      "sha256": "354f5ade810577443b36578b845e322f9cd35ff5cb1236214b1241a433e216bd"
     },
     {
       "path": "apps/mcp/src/mcp/tools/account-status.ts",
-      "sha256": "4dd354018ea42b69d693cf8d20895117d7d2d69dc61a9a1da9f5820295dd4833"
+      "sha256": "d17436642b4cece7a0c9652294740b8e7c41f19ca6b29963442448dd7f26e1fc"
     },
     {
       "path": "apps/mcp/src/mcp/tools/aftercard-status.ts",
@@ -29,7 +29,7 @@
     },
     {
       "path": "apps/mcp/src/mcp/tools/app-tool.ts",
-      "sha256": "85587277d0194c60e6aa2b851d63347276a621c3ed0d3b2a8a8aa2e677c6a845"
+      "sha256": "97f9780cb680ba125a9aec001b7eeabe245d756dcf28fdc77304e9c347e93432"
     },
     {
       "path": "apps/mcp/src/mcp/tools/checkout-contract.ts",
@@ -49,11 +49,11 @@
     },
     {
       "path": "apps/mcp/src/mcp/tools/email-contract.ts",
-      "sha256": "87d60810bd515328d04baa34ca3a590819c2c9249f7179a400632f68c44f078b"
+      "sha256": "bfbf6b27a9d0298cf2b2f6e9628dac1ef09c90caba24edcba720b40a0e140c66"
     },
     {
       "path": "apps/mcp/src/mcp/tools/email.ts",
-      "sha256": "689d2826543ac506d678bc6cfdf87fc76486e28ee8f697844b2667abff5e07d0"
+      "sha256": "eefc00398636ad8417aea34b82b80c99952809823e72f0ade6a80d122db30ae2"
     },
     {
       "path": "apps/mcp/src/mcp/tools/hosted-links.ts",
@@ -65,7 +65,7 @@
     },
     {
       "path": "apps/mcp/src/mcp/tools/kyc.ts",
-      "sha256": "5c547376cd3aa80e747680cc891f15be44af2188dbcf606b129938cd29609d16"
+      "sha256": "90e1f659f9eeccec1d24278964a0e88d768007de92d4b6de0183af1ab2a793c2"
     },
     {
       "path": "apps/mcp/src/mcp/tools/magic-card-appearance-schema.ts",
@@ -77,23 +77,23 @@
     },
     {
       "path": "apps/mcp/src/mcp/tools/payment-api-error.ts",
-      "sha256": "f1906f3c8e4eada137d745b8f2508b72fd064113982321cdd788d58ceb051613"
+      "sha256": "495ad1fa8f7557e409252496bccc7cb973f58e9985b828f981ee7c997ef63990"
     },
     {
       "path": "apps/mcp/src/mcp/tools/payment-operation-contract.ts",
-      "sha256": "30c655b7fb222f7e7361d2f0c483d154eb71daa1bcb221d84f496705491a5e95"
+      "sha256": "494c2c8cb4e1446878efcf27a0af7199c16710e56ab5eca2d39550c1b5387cf6"
     },
     {
       "path": "apps/mcp/src/mcp/tools/payment-run-contract.ts",
-      "sha256": "f7b3b728504a28d0dc9156cb32118651de681dd6e9234625b5f33ec650e41eba"
+      "sha256": "b36c26d459414d648cfff3968d2ee9029150a5a295baba4d4e89fd1140799d1d"
     },
     {
       "path": "apps/mcp/src/mcp/tools/payment-runs.ts",
-      "sha256": "489e4ff6502225a559d502730ec38f08c6c88774866ba5d2a28d88fa63eb2cbd"
+      "sha256": "b1a6459f20bf6e449ac8efc206e54e9f0ac6a72da0ef58f90eb176b2e1969e53"
     },
     {
       "path": "apps/mcp/src/mcp/tools/payments.ts",
-      "sha256": "79727b0e81a5ee03a780649b1d8a8841d6b7561b85117d419596a81643629cff"
+      "sha256": "93ff7f3b00653fb5daef43ba63cd080dcac225a4575419c5e532a0b4ee142472"
     },
     {
       "path": "apps/mcp/src/mcp/tools/preferences.ts",
@@ -117,39 +117,39 @@
     },
     {
       "path": "apps/mcp/src/mcp/tools/runtime-choice.ts",
-      "sha256": "c434ee11125e787d18aed968c095af033c5ddda046be30c4524287610a631c43"
+      "sha256": "93623302c22a84d3125c369c372d5f16cc16df24c33c0777827fa5ff89d99e4a"
     },
     {
       "path": "apps/mcp/src/mcp/tools/runtime-request-contract.ts",
-      "sha256": "5763bce41adc5fd13a2b123c6f5f00daaf441602489917400ecc3d41b8727bbf"
+      "sha256": "f450f15aa1fb1edf82cc2d42e7272f1fdb18562875a7cb78ed1216097b89c0be"
     },
     {
       "path": "apps/mcp/src/mcp/tools/runtime-request-links.ts",
-      "sha256": "45faf21c120340c45850cce93bf41c3a40ea16b7afee1ae08fdc5e48f4bbfd9a"
+      "sha256": "ec0a820166c5f6ea360c2f93856947602349674bb3488b953a62256b2b5bb454"
     },
     {
       "path": "apps/mcp/src/mcp/tools/runtime-request-tasks.ts",
-      "sha256": "994f1903990def20260e4cfac022701a3066519584d7c3d562170e0c712fa659"
+      "sha256": "281eb756294a8fa510526f3ca47f149985cdb377952e0775d1298af8a6510046"
     },
     {
       "path": "apps/mcp/src/mcp/tools/runtime-requests.ts",
-      "sha256": "03fff23b773c0ecf5ba0d9fa066db90ba04ada954986cf45728d58cf14e99b88"
+      "sha256": "3b84bb93659af94938e9f0b4dd4cd2d9db233cf6e79b884b6850a090b36ccef3"
     },
     {
       "path": "apps/mcp/src/mcp/tools/runtime-status.ts",
-      "sha256": "37ebb3416e9efb027e9c71fa73546d03d525c421916eb12cb01fc8bc2b24c8c1"
+      "sha256": "846c426ead14f151fa8c9db8fbe674a0e79f67766fccad282e3719f41f6a5424"
     },
     {
       "path": "apps/mcp/src/mcp/tools/secret-execution-contract.ts",
-      "sha256": "aabeb2ffb014f3c80ef07a088cea5f86ac403a51d968a70536ab57d2d0a70f99"
+      "sha256": "4347d710abbe05eccb735862145bc2af9d26520bfc63803f68e63d7e725eb44a"
     },
     {
       "path": "apps/mcp/src/mcp/tools/secret-execution.ts",
-      "sha256": "340c71502daef34f4a98ca94ad60f012d468b3f8ac48aaae9ae026c451cf0c53"
+      "sha256": "fa18e6493b077dec6df9730dc0027679cbd01d4eb57300f0b27dc7f29079f0e0"
     },
     {
       "path": "apps/mcp/src/mcp/tools/secret-save.ts",
-      "sha256": "6ad7c824ed6a26dd86fc29601e1b4a6a265b13cde41bab5646a6a8aa6861d74d"
+      "sha256": "17862a7a48815b6910d39ce79d038657ec07fe0c38d5c48d4607390fa970798a"
     },
     {
       "path": "apps/mcp/src/mcp/tools/secrets.ts",
@@ -157,7 +157,7 @@
     },
     {
       "path": "apps/mcp/src/mcp/tools/shared.ts",
-      "sha256": "07da4368a2bfdfb84020a6ee61119aa45789d27f0284f4585a5ac8ba46ad9bae"
+      "sha256": "bc570f8ea497df7d0ac1ebb6ce6aad4cdc9ea4790649d89b487aa0e397ca958a"
     },
     {
       "path": "apps/mcp/src/mcp/tools/subscription-details-contract.ts",
@@ -165,7 +165,7 @@
     },
     {
       "path": "apps/mcp/src/mcp/tools/subscription-enrollment.ts",
-      "sha256": "38741cadb5418164bdffab6f746c60b0d0a884dd9817675ed9322a5d5a88e3e0"
+      "sha256": "3a63dc6b11356747bde0eb45b58449ae42ec81168efef5c83b70051b6467169e"
     },
     {
       "path": "apps/mcp/src/mcp/tools/subscriptions.ts",
@@ -181,19 +181,19 @@
     },
     {
       "path": "apps/mcp/src/mcp/tools/topup-addresses.ts",
-      "sha256": "831fc3667d18c01a40e0dcff631576e59a840901b1f107c9d18049090983aa2a"
+      "sha256": "430bc1589519c8727416425a00ee934396919f765e8bffd6e1d832cef23745ba"
     },
     {
       "path": "apps/mcp/src/mcp/tools/topup-link.ts",
-      "sha256": "a766f54bb8cfa6799964975d6e362adf30db349a0519456d97ad850cc69f2136"
+      "sha256": "c4e64ac93dfc0666fc9ae92d9f9d2e1db2d4a7830a1ab82f41ec407a52f0d525"
     },
     {
       "path": "apps/mcp/src/mcp/tools/topup-widget-actions.ts",
-      "sha256": "31c23a4f844fd19895e012974660d4b2882463f4c6976de86681801796a3bf19"
+      "sha256": "c8731a1dfc60c85a1b8ceb63f8bd5e92ed7dc18cff88b17a5452f6462c822426"
     },
     {
       "path": "apps/mcp/src/mcp/tools/topup.ts",
-      "sha256": "6480356788a9b804235ec20be7baa02b3eae2f2a194de3e446e8e8d9ee81ef32"
+      "sha256": "76f4d113fea2cd92149e65f7bd731823c23f19fafffc2a49c7ea5b0ab5248d82"
     },
     {
       "path": "apps/mcp/src/mcp/tools/view-links.ts",
@@ -213,11 +213,11 @@
     },
     {
       "path": "apps/mcp/src/mcp/tools/x402-result-integrity.ts",
-      "sha256": "4ed83ea5c110cac1be1ac9ca0c8c8f031a38ee4c8e7bfdeba5006c60b28108f4"
+      "sha256": "14a0f3813b62974337b8b8a0c8595c999199a2e8a02d091d4a7fce8187916274"
     },
     {
       "path": "packages/agent-skills/scripts/build-aftercard-skills.mjs",
-      "sha256": "8c7a21da439229eb2449ebdc80a028307dac261a634997b871f94910e5ca85b5"
+      "sha256": "86666d2585eb142968044ae814369fddec1265c811f3b9f1593607efb780df5e"
     },
     {
       "path": "packages/agent-skills/skills/aftercard/references/accounts.md",
@@ -225,19 +225,19 @@
     },
     {
       "path": "packages/agent-skills/skills/aftercard/references/browser.md",
-      "sha256": "1168fda1256c6ddd5f44005a3ee2a586004b1967376ffbdf76935c73141f10d4"
+      "sha256": "d059797859840e6c940a7f3b38407cc9fe2d9bc110b9233c81889a87ebe98acf"
     },
     {
       "path": "packages/agent-skills/skills/aftercard/references/connection.md",
-      "sha256": "c9b1ddc3cb8b006305e9daa865a89ec07a9f4eeb1477ae002d1dd794a8ed4be0"
+      "sha256": "58d8e85761f4a6eb8bc1727e64573e785b6fb2c275c4af211ff67e17d1cca88f"
     },
     {
       "path": "packages/agent-skills/skills/aftercard/references/payments.md",
-      "sha256": "d3b545bd9da7aed03f251d61489fb76496339f356a2a84aad4a11e6d24bb7906"
+      "sha256": "7594b7af4cd26168f4cd37c01ea97258f39e6a87d112dcf5b108b80252f2a77e"
     },
     {
       "path": "packages/agent-skills/skills/aftercard/references/requests-and-email.md",
-      "sha256": "2f40d8e3e8af066a3321b6c818bafc3c16093cd2c17c33eb5a14df84b015f5fc"
+      "sha256": "9a141eab81e7a1e2e961c21ce2508c15f3a8bd975173e2b6145021e22fffa26f"
     },
     {
       "path": "packages/agent-skills/skills/aftercard/references/research.md",
@@ -245,7 +245,7 @@
     },
     {
       "path": "packages/agent-skills/skills/aftercard/references/secrets.md",
-      "sha256": "dda474f701e19337348a9658c671f44344d0bf7d37090fe488c6570e68884e76"
+      "sha256": "f1e9154c7b39573f8261ba7573a6ae4e62f4b4ee114201076bca03c182dd77c1"
     },
     {
       "path": "packages/agent-skills/skills/aftercard/references/subscriptions.md",
@@ -253,11 +253,11 @@
     },
     {
       "path": "packages/agent-skills/skills/aftercard/SKILL.md",
-      "sha256": "37508457e99f60a1a0f0e1e6fb1b6b92bc3657401b7b36c5699d778bb67c86d7"
+      "sha256": "b6f2511b0cd6c9744c22c5362d950c8e52f033757240806876bb24cd2d811517"
     },
     {
       "path": "packages/agents/src/api/aftercard-mcp-setup.mjs",
-      "sha256": "b05215cfbdefbf54bf435cb9145844a35993f66508f9d4279c0e87d6d4dd3430"
+      "sha256": "475dc67cd93b743b1812f74589e1b5a91ed2e8e894a47e6952085468369f5fb2"
     }
   ],
   "files": [
@@ -267,15 +267,15 @@
     },
     {
       "path": ".claude-plugin/marketplace.json",
-      "sha256": "020f5177872a2ee09c0884bbc5701ad6f803eb7bb067ef9ae37032c32823bb20"
+      "sha256": "3b9f266f0f9a07f08229e330bd3a8c8f334f72c6f2f60d34be29c8066ec7cc4d"
     },
     {
       "path": "docs/connection.md",
-      "sha256": "69e9d17a5de2613cffd3f4b0f00f4ae5e1fc965d4681d3276f40a6d352ed8269"
+      "sha256": "bb2467422de5ff8b391bcfc39c6ec828a0fda6211365d968353a29a172e5362b"
     },
     {
       "path": "docs/install.md",
-      "sha256": "d4cb199dd05c0c09435b376ff914d69eb5a8cbbfe1b2c4f76e8eec7080ef7224"
+      "sha256": "9a980f29a1bb6c9049ec3ab76c1eb7e9d9c4fb37909a854e3466bfa0a9002a85"
     },
     {
       "path": "LICENSE",
@@ -283,15 +283,15 @@
     },
     {
       "path": "manifests/tools.json",
-      "sha256": "e70598c3117a3d50f35c59c1b9e46a351d6e866f20eaab1b84d656d25bf53505"
+      "sha256": "d566d2ce05c172e9dfa7a3d5bbed117102a0cfc45edde3cd7497e07c9760042b"
     },
     {
       "path": "plugins/aftercard/.claude-plugin/plugin.json",
-      "sha256": "947f62def262b6d7d0281cf6a197d28b141f216746fa51eb851ebd02701d09d7"
+      "sha256": "6fa18e100606ef03d8768e2288d6263db5607e83b15692c5d74a0cc831fd98cf"
     },
     {
       "path": "plugins/aftercard/.codex-plugin/plugin.json",
-      "sha256": "d50bce31c9ff211457638c961ee9c0fe724077e336edbf4a81ceea53f3ea743a"
+      "sha256": "4d29a3950f8fa111395ded441680863ebf6bda2f0bd295cf97927235c23bba32"
     },
     {
       "path": "plugins/aftercard/.mcp.json",
@@ -303,7 +303,7 @@
     },
     {
       "path": "plugins/aftercard/plugin.json",
-      "sha256": "cedc124a07bf9627638b1e45875ab3bd9f6c9d9328638ab8386c6e44e72a76e2"
+      "sha256": "51ed3188e9d807660378c32c8d100b1e276690f174548386637b4ff349862010"
     },
     {
       "path": "plugins/aftercard/skills/aftercard/agents/openai.yaml",
@@ -319,19 +319,19 @@
     },
     {
       "path": "plugins/aftercard/skills/aftercard/references/browser.md",
-      "sha256": "1168fda1256c6ddd5f44005a3ee2a586004b1967376ffbdf76935c73141f10d4"
+      "sha256": "d059797859840e6c940a7f3b38407cc9fe2d9bc110b9233c81889a87ebe98acf"
     },
     {
       "path": "plugins/aftercard/skills/aftercard/references/connection.md",
-      "sha256": "c9b1ddc3cb8b006305e9daa865a89ec07a9f4eeb1477ae002d1dd794a8ed4be0"
+      "sha256": "58d8e85761f4a6eb8bc1727e64573e785b6fb2c275c4af211ff67e17d1cca88f"
     },
     {
       "path": "plugins/aftercard/skills/aftercard/references/payments.md",
-      "sha256": "d3b545bd9da7aed03f251d61489fb76496339f356a2a84aad4a11e6d24bb7906"
+      "sha256": "7594b7af4cd26168f4cd37c01ea97258f39e6a87d112dcf5b108b80252f2a77e"
     },
     {
       "path": "plugins/aftercard/skills/aftercard/references/requests-and-email.md",
-      "sha256": "2f40d8e3e8af066a3321b6c818bafc3c16093cd2c17c33eb5a14df84b015f5fc"
+      "sha256": "9a141eab81e7a1e2e961c21ce2508c15f3a8bd975173e2b6145021e22fffa26f"
     },
     {
       "path": "plugins/aftercard/skills/aftercard/references/research.md",
@@ -339,7 +339,7 @@
     },
     {
       "path": "plugins/aftercard/skills/aftercard/references/secrets.md",
-      "sha256": "dda474f701e19337348a9658c671f44344d0bf7d37090fe488c6570e68884e76"
+      "sha256": "f1e9154c7b39573f8261ba7573a6ae4e62f4b4ee114201076bca03c182dd77c1"
     },
     {
       "path": "plugins/aftercard/skills/aftercard/references/service-instructions.md",
@@ -351,23 +351,23 @@
     },
     {
       "path": "plugins/aftercard/skills/aftercard/references/tool-catalog.md",
-      "sha256": "89919a76fb01112e7907b4e74c3d1cf0dc41583966f8b665d22dd73a2ad2a7ea"
+      "sha256": "a344e202405c2b87ca4b0b440b4f56d694c71f52ea64f99025839d8da96de921"
     },
     {
       "path": "plugins/aftercard/skills/aftercard/SKILL.md",
-      "sha256": "37508457e99f60a1a0f0e1e6fb1b6b92bc3657401b7b36c5699d778bb67c86d7"
+      "sha256": "b6f2511b0cd6c9744c22c5362d950c8e52f033757240806876bb24cd2d811517"
     },
     {
       "path": "README.md",
-      "sha256": "436a0b4e55d7255068927555e9a71f68a52333d2448c60bb55789645881106e2"
+      "sha256": "397b3a9418e264f81f84820e86b5df6f8b77bd40fde85458c7d939078b337836"
     },
     {
-      "path": "releases/aftercard-v2.0.6.zip",
-      "sha256": "5f5891ad83ac0041040d272d68330f5bf04695cd290c851b30df7ca37929a599"
+      "path": "releases/aftercard-v2.0.12.zip",
+      "sha256": "ff93288c6b4943aa2f44bd68656d99707ecb20ce776466da52b3ea1b874d83d1"
     },
     {
       "path": "releases/aftercard.zip",
-      "sha256": "5f5891ad83ac0041040d272d68330f5bf04695cd290c851b30df7ca37929a599"
+      "sha256": "ff93288c6b4943aa2f44bd68656d99707ecb20ce776466da52b3ea1b874d83d1"
     },
     {
       "path": "skills/aftercard/agents/openai.yaml",
@@ -383,19 +383,19 @@
     },
     {
       "path": "skills/aftercard/references/browser.md",
-      "sha256": "1168fda1256c6ddd5f44005a3ee2a586004b1967376ffbdf76935c73141f10d4"
+      "sha256": "d059797859840e6c940a7f3b38407cc9fe2d9bc110b9233c81889a87ebe98acf"
     },
     {
       "path": "skills/aftercard/references/connection.md",
-      "sha256": "c9b1ddc3cb8b006305e9daa865a89ec07a9f4eeb1477ae002d1dd794a8ed4be0"
+      "sha256": "58d8e85761f4a6eb8bc1727e64573e785b6fb2c275c4af211ff67e17d1cca88f"
     },
     {
       "path": "skills/aftercard/references/payments.md",
-      "sha256": "d3b545bd9da7aed03f251d61489fb76496339f356a2a84aad4a11e6d24bb7906"
+      "sha256": "7594b7af4cd26168f4cd37c01ea97258f39e6a87d112dcf5b108b80252f2a77e"
     },
     {
       "path": "skills/aftercard/references/requests-and-email.md",
-      "sha256": "2f40d8e3e8af066a3321b6c818bafc3c16093cd2c17c33eb5a14df84b015f5fc"
+      "sha256": "9a141eab81e7a1e2e961c21ce2508c15f3a8bd975173e2b6145021e22fffa26f"
     },
     {
       "path": "skills/aftercard/references/research.md",
@@ -403,7 +403,7 @@
     },
     {
       "path": "skills/aftercard/references/secrets.md",
-      "sha256": "dda474f701e19337348a9658c671f44344d0bf7d37090fe488c6570e68884e76"
+      "sha256": "f1e9154c7b39573f8261ba7573a6ae4e62f4b4ee114201076bca03c182dd77c1"
     },
     {
       "path": "skills/aftercard/references/service-instructions.md",
@@ -415,11 +415,11 @@
     },
     {
       "path": "skills/aftercard/references/tool-catalog.md",
-      "sha256": "89919a76fb01112e7907b4e74c3d1cf0dc41583966f8b665d22dd73a2ad2a7ea"
+      "sha256": "a344e202405c2b87ca4b0b440b4f56d694c71f52ea64f99025839d8da96de921"
     },
     {
       "path": "skills/aftercard/SKILL.md",
-      "sha256": "37508457e99f60a1a0f0e1e6fb1b6b92bc3657401b7b36c5699d778bb67c86d7"
+      "sha256": "b6f2511b0cd6c9744c22c5362d950c8e52f033757240806876bb24cd2d811517"
     },
     {
       "path": "skills.sh.json",

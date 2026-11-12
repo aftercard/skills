@@ -217,7 +217,7 @@ Present the integrity-verified original before an optional summary:
 Retain media type, length, digest and expiry with the result; report an integrity
 or ownership mismatch rather than reconstructing output. For a completed x402
 run, `wait_payment({taskId, timeoutMs: 0})` retrieves the same original without
-paying. An embedded `magicpay` resource URI identifies returned bytes; it is not
+paying. An embedded `aftercard` resource URI identifies returned bytes; it is not
 a browser URL or a separate resource-read endpoint. Keep already retained output
 available even if a continuation expires. Receipt attachment follows
 [accounts](accounts.md#receipts-and-invoices) on the same payment operation.

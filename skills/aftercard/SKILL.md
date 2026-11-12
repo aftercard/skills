@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires the Aftercard remote MCP connection. Browser checkout also requires a host-supported browser and permitted payment input/actions.
 metadata:
   author: Aftercard
-  version: "2.0.6"
+  version: "2.0.12"
 ---
 
 # Aftercard
@@ -18,7 +18,7 @@ authorization, requests, operations and recovery. A skill adds no permissions.
 Read this entry when needed, then only the relevant reference. Current tool
 schemas and owned structured service results govern exact arguments and
 continuation. Never invent a tool, identifier, approval, status or capability.
-Protocol names containing `magicpay` remain valid Aftercard tool names.
+Existing versioned payment and recovery identifiers remain valid across the rename.
 
 Before resolving saved or missing form details, read [Secrets](references/secrets.md).
 Retain usable saved fields and collect only missing requirements. Map every

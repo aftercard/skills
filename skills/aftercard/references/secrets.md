@@ -140,6 +140,19 @@ never infer passport sex from Title, nationality from residence, or a person
 from an secret name. For research needing age, `get_secret_profile_context` with
 the intended entity and travel-date `asOfDate` can supply age without a birth date.
 
+### Name secrets for their purpose
+
+For every savable collection group, supply `secretName` and `description` in
+`resolve_browser_form_values.collectionGroups`. Name the actual person, service
+or purpose rather than repeating a template name. For example, use **Omni gym
+login** with **Sign-in details for managing the Omni gym membership**, rather
+than **Website login**. Apply the same rule to profiles, addresses, identity
+documents and other secrets; use only known context and keep secret values out
+of this metadata. The form prefills both as editable suggestions for review.
+Keep meaningful existing metadata when updating a saved secret unless the user
+requests a change; retain the same suggestions and original resolver inputs on
+continuation. Missing optional metadata must not block Use once.
+
 ### Partial-saved travel example
 
 Synthetic `resolve_browser_form_values` input: Iris has saved Title and passport
@@ -238,6 +251,7 @@ question beside an already visible request.
 | --- | --- |
 | `ready` | Map and fill the complete authorized batch; optional collected extras are not task output. |
 | `kind: request_required` | Present its secure request; after fulfillment replay the original resolver and key, including its original footprint revision after Save. |
+| Saved candidate conflict | Use the returned chooser once. If recording an explicit selection through `decide_request`, use `choose_candidate` with its exact stored `selectedChoiceId`, never a secret ID or a label. Then replay the original resolver and key; selection is not field-release approval. |
 | Declared Provide different details | Submit its exact stored `selectedChoiceId` with `choose_candidate`; replay the original resolver. The service switches to fresh collection; do not rewrite its input or deny the request to clear it. |
 | `saveOutcome.status: saved` | Confirm the returned item/field labels without values. |
 | `saveOutcome.status: not_saved` | Current-run use only. Use once creates no Secrets records. |
@@ -250,6 +264,42 @@ body, task and clientRequestId and read its recorded decision. A saved optional
 Full name/sex extra was not released unless included in the ready output; obtain
 only a newly needed field through its supported policy. Never re-request the
 already resolved document number because that extra was not in the old batch.
+
+## Website login correction
+
+Website login email is independent of Personal profile email. Missing login
+identity belongs to typed `login.website` collection, not a saved profile
+selection. The authenticated form may prefill an editable same-entity profile
+email; this suggestion never authorizes a login or changes the profile.
+
+After the merchant rejects a login, rediscover that exact site's owned Website
+login and current revision/field IDs. Use `request_secret_values` in the SAME
+task with a fresh correction `idempotencyKey`, `secretId`,
+`expectedContentRevision`, and only the email/username/password fields needing
+correction (`fieldRef`, human label, appropriate `inputType`). Set `context.url`
+to the actual login destination and describe the correction in `context.purpose`.
+The secure form offers updating that existing login; never ask for credentials
+in chat, create a duplicate account/login, or substitute a profile email.
+A missing password alone does not require changing the saved identifier.
+
+Present the returned secure Mini App link once and wait for that exact request.
+After Save, confirm the update, rediscover the new revision, and resolve/release
+its exact fields under current consent before filling the freshly observed
+merchant form. Preserve omitted fields, the same task, browser and cart; verify
+sign-in before continuing. Cancel/denial does not update credentials or permit
+another release. On another explicit rejection, do not reuse that rejected
+revision: request the next supported correction, without looping attempts.
+
+A service-issued **Provide different details** choice on a still-pending batch
+keeps its original resolver/body/key and exact decision, as above. Do not replace
+that continuation with a generic request. Use once changes no saved secret.
+Reviewed Save on a compatible partial target updates only supplied fields;
+Save after Provide different details creates a new secret and preserves the
+rejected one. This differs from explicit Website login correction above, which
+updates the existing revision-bound login. A new correction after a fulfilled
+login attempt is a distinct intent/key; retry that same correction unchanged.
+A request-slot or revision conflict requires reading/reconciling the existing
+request, not opening parallel forms or restarting the purchase.
 
 ## Explicit Save and updates
 

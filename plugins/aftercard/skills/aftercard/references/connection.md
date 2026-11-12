@@ -32,7 +32,7 @@ missing host feature. Other hosts use their native remote MCP settings.
 After authorization, discover deferred tools in this conversation and reuse
 the current task when callable. For diagnosis use `get_aftercard_status`; each
 section retains its connected or requested-agent scope. Older catalogs expose
-`get_magicpay_capabilities`, `get_magicpay_status` and `account_status` for
+`get_aftercard_capabilities`, `get_aftercard_runtime_status` and `account_status` for
 their separate diagnostic reads. A normal task needs no startup checklist.
 Follow observed authentication, service and activation errors
 separately. Use only the host's supported refresh or documented user handoff;

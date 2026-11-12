@@ -20,9 +20,9 @@ A canceled or denied action stops this attempt. Report cancellation, connection 
 
 ## Verify in this conversation
 
-After configuration or authentication, use deferred tool discovery in the current task to find `get_magicpay_capabilities`. Continue in the same task when it succeeds. Missing tools alone do not establish that sign-in is required; use the host's supported MCP refresh control and report the actual blocker if tools remain unavailable.
+After configuration or authentication, use deferred tool discovery in the current task to find `get_aftercard_capabilities`. Continue in the same task when it succeeds. Missing tools alone do not establish that sign-in is required; use the host's supported MCP refresh control and report the actual blocker if tools remain unavailable.
 
-Call `get_magicpay_capabilities`, then the authenticated `get_magicpay_status`. Preserve these protocol tool names. Follow returned `setupState`, `outcome`, `nextAction`, and instructions. Configuration saved, a healthy server, and an OAuth window closing are separate facts; only a successful authenticated tool call verifies a usable connection. If sign-in completed but tools are unavailable, report exactly that.
+Call `get_aftercard_capabilities`, then the authenticated `get_aftercard_runtime_status`. Preserve these protocol tool names. Follow returned `setupState`, `outcome`, `nextAction`, and instructions. Configuration saved, a healthy server, and an OAuth window closing are separate facts; only a successful authenticated tool call verifies a usable connection. If sign-in completed but tools are unavailable, report exactly that.
 
 After authenticated status succeeds, silently read `get_payment_balance` without an asset selector. Report only verified connection, balance and available payment capabilities. An unavailable balance is unknown, not zero. Do not create a top-up link, payment or test purchase during setup.
 

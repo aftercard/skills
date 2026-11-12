@@ -200,6 +200,26 @@
     }
   },
   {
+    "name": "get_aftercard_capabilities",
+    "description": "Read current payment-rail eligibility, execution mode, environment, and build identity for the selected agent.",
+    "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "openWorldHint": false,
+      "idempotentHint": true
+    }
+  },
+  {
+    "name": "get_aftercard_runtime_status",
+    "description": "Read the connected agent's identity, status, and resolved Secret policies with their revisions.",
+    "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "openWorldHint": false,
+      "idempotentHint": true
+    }
+  },
+  {
     "name": "get_aftercard_status",
     "description": "Read connected account/agent status, scoped payment-rail eligibility, and Secret policies. Each section reports its own availability; this check authorizes no spending.",
     "annotations": {
@@ -232,26 +252,6 @@
   {
     "name": "get_checkout_task",
     "description": "Read one checkout's workflow state and current request.",
-    "annotations": {
-      "readOnlyHint": true,
-      "destructiveHint": false,
-      "openWorldHint": false,
-      "idempotentHint": true
-    }
-  },
-  {
-    "name": "get_magicpay_capabilities",
-    "description": "Read current payment-rail eligibility, execution mode, environment, and build identity for the selected agent.",
-    "annotations": {
-      "readOnlyHint": true,
-      "destructiveHint": false,
-      "openWorldHint": false,
-      "idempotentHint": true
-    }
-  },
-  {
-    "name": "get_magicpay_status",
-    "description": "Read the connected agent's identity, status, and resolved Secret policies with their revisions.",
     "annotations": {
       "readOnlyHint": true,
       "destructiveHint": false,
@@ -601,7 +601,7 @@
   },
   {
     "name": "resolve_browser_form_values",
-    "description": "Resolve saved and missing form values. Keep partial saved selections; collect only missing requirements. Replay original inputs/clientRequestId after collection. Excludes cards, OTPs and wallet secrets; host fills.",
+    "description": "Resolve saved and missing form values. Keep partial saved selections; collect only missing requirements. Prefill each savable collection group with a meaningful secretName and description. Replay original inputs/clientRequestId after collection. Excludes cards, OTPs and wallet secrets; host fills.",
     "annotations": {
       "readOnlyHint": false,
       "destructiveHint": false,
